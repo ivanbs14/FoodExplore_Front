@@ -60,14 +60,10 @@ export const Content = styled.div`
         background: ${({ theme }) => theme.COLORS.Dark_800};
     }
 
-    button:nth-child(1) {
-        font-weight: 700;
-        font-size: ${px2vw(24)};
-    }
-
     section:nth-child(1) {
         width: 100%;
         margin-right: ${px2vw(32)};
+        background: ${({ theme }) => theme.COLORS.Dark_400};
     }
 
     section {
@@ -106,16 +102,38 @@ export const Content = styled.div`
     }
 
     .btntext {
+        width: ${px2vw(172)};
+        height: ${px2vw(48)};
+        
+        font-size: ${px2vw(14)};
+
+        /* margin-left: 85.5%; */
+        padding: ${px2vw(12)} ${px2vw(24)};
+    }
+
+    .btns {
+        display: flex;
+        gap: 32px;
+
+        justify-content: end;
+
+        margin-bottom: 16px;
+
+        button:nth-child(1) {
+            background-color: ${({ theme }) => theme.COLORS.Dark_800};
+        }
+
+        button {
             width: ${px2vw(172)};
             height: ${px2vw(48)};
-            
+        
+            font-weight: 500;
             font-size: ${px2vw(14)};
 
-            margin-left: 85.5%;
             padding: ${px2vw(12)} ${px2vw(24)};
-
-            margin-bottom: 16px;
         }
+    }
+
 `;
 
 export const Dish = styled.div`
