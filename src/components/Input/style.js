@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import px2vw from "../../utils/px2vw";
 
 export const Conteiner = styled.div`
-    width: 400px;
+    width: ${px2vw(400)};
     align-items: center;
     
     color: ${({theme}) => theme.COLORS.LIGHT_100};
@@ -10,7 +11,7 @@ export const Conteiner = styled.div`
     
     > input {
         width: 100%;
-        height: 48px;
+        height: ${px2vw(48)};
         
         padding: 12px;
         

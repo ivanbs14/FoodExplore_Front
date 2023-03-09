@@ -29,6 +29,7 @@ export function Header() {
                     <BsReceiptCutoff />
                     Novo prato
                 </Button>
+                
                 <Logout>
                     <FaSignOutAlt />
                 </Logout>

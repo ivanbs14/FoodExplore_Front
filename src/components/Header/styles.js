@@ -18,7 +18,7 @@ export const Content = styled.div`
     padding: ${px2vw(24)} ${px2vw(123)};
     
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     gap: ${px2vw(32)};
 
@@ -26,18 +26,22 @@ export const Content = styled.div`
        
     }
     
-    @media (min-width: 429px) {
-        
+    button {
+        width: ${px2vw(216)};
+        height: ${px2vw(56)};
+
+        margin-top: 0;
+        padding: 0;
+        border-radius: 5px;
     }
 
-    button {
-        width: 216px;
-        height: 56px;
+    @media (min-width: 429px) {
+        
     }
 `;
 
 export const Search = styled.div`
-    width: 100%;
+    width: ${px2vw(680)};
     height: ${px2vw(48)};
 
     border-radius: 5px;
@@ -55,14 +59,13 @@ export const Search = styled.div`
 
 `;
 
-export const Logout = styled.button`
+export const Logout = styled.div`
     border: none;
-    background: none;
 
-    padding:10px 150px 0 32px;
+    cursor: pointer;
 
     svg {
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-size: 32px;
+        font-size: ${px2vw(32)};
     }
 `;

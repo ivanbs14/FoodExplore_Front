@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import px2vw from "../../utils/px2vw";
 
 export const Conteiner = styled.button`
     width: 100%;
@@ -6,9 +7,9 @@ export const Conteiner = styled.button`
     background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-    height: 48px;
+    height: ${px2vw(48)};
     border: 0;
-    padding: 12px, 32px;
+    padding: ${px2vw(12)} ${px2vw(32)};
     border-radius: 5px;
     font-weight: 500;
 
