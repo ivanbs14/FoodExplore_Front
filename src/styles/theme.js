@@ -33,7 +33,7 @@ export default {
         MINT_100: "#04D361",
         
         CAKE_100: "#065E7C",
-        CAKE_200: "82F3FF",
+        CAKE_200: "#82F3FF",
         
     }
 }

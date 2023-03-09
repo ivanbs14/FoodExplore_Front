@@ -6,6 +6,15 @@ export const Conteiner = styled.div`
     height: ${px2vw(105)};
 
     background: ${({ theme }) => theme.COLORS.Dark_600};
+
+    .logs {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            margin-left: 75%;
+        }
+    }
     
     @media (min-width: 429px) {
         

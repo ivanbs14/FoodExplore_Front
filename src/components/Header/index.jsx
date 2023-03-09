@@ -14,7 +14,10 @@ export function Header() {
     return (
         <Conteiner>
             <Content>
-                <img src={ImgLogo} alt="Logo" />
+                <div className="logs">
+                    <img src={ImgLogo} alt="Logo" />
+                    <a className="adm hide" href="#">admin</a>
+                </div>
 
                 <Search>
                     <AiOutlineSearch />

@@ -14,7 +14,7 @@ import { NotItens } from "../../components/NotItens"
 export function NewDishes() {
     return (
         <Conteiner>
-            <Header />
+                <Header />
             <Content>
                 <ButtonText title={"voltar"}/>
 

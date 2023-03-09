@@ -17,6 +17,14 @@ export const Conteiner = styled.div`
         flex-wrap: wrap;
         gap: ${px2vw(16)};
     }
+
+    div {
+        .adm {
+            font-size: 12px;
+            text-decoration: none;
+            color: ${({ theme }) => theme.COLORS.CAKE_200};
+        }
+    }
 `;
 
 export const Content = styled.div`
