@@ -4,6 +4,7 @@ import { SignUp } from './pages/SignUp'
 import { SignIn } from './pages/SignIn'
 import { NewDishes } from './pages/NewDishes'
 import { EditDishes } from './pages/EditDishes'
+import { DishesAdm } from './pages/DishesAdm'
 import GlobalStyles from './styles/global';
 import { ThemeProvider } from 'styled-components'
 
@@ -13,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <EditDishes />
+      <DishesAdm />
     </ThemeProvider>
   </React.StrictMode>,
 )

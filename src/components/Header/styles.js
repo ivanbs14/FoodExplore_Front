@@ -50,7 +50,7 @@ export const Content = styled.div`
 `;
 
 export const Search = styled.div`
-    width: ${px2vw(680)};
+    width: ${px2vw(620)};
     height: ${px2vw(48)};
 
     border-radius: 5px;
