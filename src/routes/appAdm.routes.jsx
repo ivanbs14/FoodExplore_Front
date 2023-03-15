@@ -10,8 +10,8 @@ export function AppRoutes() {
         <Routes>
             <Route path="/dishesPreviewAdm" element={<DishesPreviewAdm />}/>
             <Route path="/editDishes" element={<EditDishes />}/>
-            <Route path="/newDishes" element={<NewDishes />}/>
-            <Route path="/" element={<MenuAdm />}/>
+            <Route path="/" element={<NewDishes />}/>
+            <Route path="/MenuAdm" element={<MenuAdm />}/>
 
         </Routes>
     )

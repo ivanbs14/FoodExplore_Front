@@ -5,8 +5,8 @@ import { Conteiner, Form } from "./styles";
 import BackgroundImg from '../../assets/LogFoodExplorer.png';
 
 import { Input } from '../../components/Input';
-import { Button } from '../../components/Button'; 
-import { Section } from '../../components/Section'; 
+import { Button } from '../../components/Button';
+import { Section } from '../../components/Section';
 
 export function SignIn() {
 

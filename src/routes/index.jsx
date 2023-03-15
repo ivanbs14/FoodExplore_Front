@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 /* import { useAuth } from "../hooks/auth"; */
 
+import { AppClientRoutes } from './appClient.routes';
 import { AppRoutes } from './appAdm.routes';
 import { AuthRoutes } from './auth.routes';
 
@@ -9,7 +10,7 @@ export function Routes() {
 
     return(
         <BrowserRouter>
-            <AuthRoutes />
+            <AppRoutes />
             {/* {user ? <AppRoutes /> : <AuthRoutes />} */}
         </BrowserRouter>
     )

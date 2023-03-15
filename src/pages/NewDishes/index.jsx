@@ -10,6 +10,7 @@ import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
 import { Button } from "../../components/Button"
 import { NotItens } from "../../components/NotItens"
+import { Categories } from "../../components/Categories"
 
 export function NewDishes() {
     return (
@@ -40,7 +41,7 @@ export function NewDishes() {
                     </Section>
                     
                     <Section title={"Categoria"}>
-                        <Input placeholder={"Refeição"}/>
+                        <Categories />
                     </Section>
                 </div>
 

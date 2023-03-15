@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { DishesClient } from '../pages/DishesClient';
 
 
-export function AppRoutes() {
+export function AppClientRoutes() {
     return(
         <Routes>
             <Route path="/" element={<DishesClient />}/>
