@@ -1,4 +1,7 @@
+import { Link, useNavigate } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
+
+import { RxCaretLeft } from "react-icons/rx"
 
 import imgTeste from "../../assets/Mask group.png"
 
@@ -7,15 +10,18 @@ import { Footer } from "../../components/Footer"
 import { ButtonText } from "../../components/ButtonText"
 import { Button } from "../../components/Button"
 
-export function DishesAdm() {
+export function DishesPreviewAdm() {
     return (
         <Conteiner>
                 <Header />
             <Content>
-                <ButtonText title={"voltar"}/>
+                <Link to="/EditDishes">
+                    <RxCaretLeft />
+                    voltar
+                </Link>
             
                 <Cont>
-                    <img src={imgTeste} alt="" />
+                    <img src={imgTeste} alt="imagem do prato" />
 
                     <div className="itens">
                         <h1>Salada Ravanello</h1>
@@ -32,7 +38,7 @@ export function DishesAdm() {
                             <ButtonText title={"tomate"}/>
                         </div>
 
-                        <Button className="btn" to={"/"} title={"Editar prato"} />
+                        <Button className="btn" to="/EditDishes" title={"Editar prato"} />
                     </div>
 
                 </Cont>

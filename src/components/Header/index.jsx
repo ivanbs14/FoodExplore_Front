@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { Conteiner, Content, Search, Logout } from "./styles";
-import { FaSignOutAlt } from "react-icons/fa";
+import { Conteiner, Content, Search } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsReceiptCutoff } from "react-icons/bs";
 
 import ImgLogo from "../../assets/LogFoodExplorer.png"
+import SignOut from "../../assets/SignOut.png"
 
 import { Input } from "../Input";
 import { Button } from "../Button"
@@ -33,9 +33,9 @@ export function Header() {
                     Novo prato
                 </Button>
                 
-                <Logout>
-                    <FaSignOutAlt />
-                </Logout>
+                <Link to="/EditDishes">
+                    <img src={SignOut} alt="Logo" />
+                </Link>
             </Content>
         </Conteiner>
     )

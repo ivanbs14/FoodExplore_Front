@@ -32,7 +32,11 @@ export const Content = styled.div`
     gap: ${px2vw(32)};
 
     a {
-       
+        display: flex;
+        align-items: center;
+
+        width: 32px;
+        height: 32px;
     }
     
     button {
@@ -68,7 +72,7 @@ export const Search = styled.div`
 
 `;
 
-export const Logout = styled.div`
+/* export const Logout = styled.div`
     border: none;
 
     cursor: pointer;
@@ -77,4 +81,4 @@ export const Logout = styled.div`
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
         font-size: ${px2vw(32)};
     }
-`;
+`; */

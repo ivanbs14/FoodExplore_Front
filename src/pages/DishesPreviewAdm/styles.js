@@ -23,9 +23,18 @@ export const Conteiner = styled.div`
 export const Content = styled.div`
     padding: ${px2vw(32)} ${px2vw(123)} 0;
 
-    button {
+    a {
         font-weight: 700;
         font-size: ${px2vw(24)};
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 50px;
+            height: 50px;
+        }
     }
 `;
 
@@ -36,35 +45,37 @@ export const Cont = styled.div`
     gap: 47px;
 
     img {
-        width: 390px;
-        height: 390px;
+        width: ${px2vw(390)};
+        height: ${px2vw(390)};
     }
 
     .itens {
         width: 100%;
-        height: 390px;
+        height: ${px2vw(390)};
+
+        margin-top: ${px2vw(45)};
 
         h1, p {
-            margin-bottom: 24px;
+            margin-bottom: ${px2vw(24)};
         }
 
         h1 {
             font-weight: 500;
-            font-size: 40px;
+            font-size: ${px2vw(40)};
         }
 
         p {
-            font-size: 24px;
+            font-size: ${px2vw(24)};
         }
         
         .products {
             display: flex;
             gap: 12px;
 
-            margin-bottom: 48px;
+            margin-bottom: ${px2vw(48)};
 
             button {
-                height: 32px;
+                height: ${px2vw(32)};
 
                 background-color: ${({ theme }) => theme.COLORS.Dark_1000};
 
@@ -77,12 +88,12 @@ export const Cont = styled.div`
         }
 
         .btn {
-            width: 131px;
-            height: 48px;
+            width: ${px2vw(140)};
+            height: ${px2vw(48)};
             font-weight: 500;
             font-size: 14px;
 
-            padding: 12px 24px;
+            padding: 12px ${px2vw(24)};
         }
     }
 

@@ -30,6 +30,20 @@ export const Conteiner = styled.div`
 export const Content = styled.div`
     padding: ${px2vw(32)} ${px2vw(123)} 0;
 
+    a {
+        font-weight: 700;
+        font-size: ${px2vw(24)};
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
     h1 {
         font-weight: 500;
         font-size: ${px2vw(32)};

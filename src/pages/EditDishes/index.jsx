@@ -1,10 +1,11 @@
 import { Conteiner, Content, Dish } from "./styles";
 
+import { RxCaretLeft } from "react-icons/rx"
+
 import { FiUpload } from 'react-icons/fi';
 
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
-import { ButtonText } from "../../components/ButtonText"
 import { Section } from "../../components/Section"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
@@ -16,7 +17,10 @@ export function EditDishes() {
         <Conteiner>
                 <Header />
             <Content>
-                <ButtonText title={"voltar"}/>
+                <a href="/">
+                    <RxCaretLeft />
+                    voltar
+                </a>
 
                 <h1>Editar prato</h1>
 

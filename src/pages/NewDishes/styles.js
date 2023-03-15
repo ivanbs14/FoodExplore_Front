@@ -106,16 +106,20 @@ export const Content = styled.div`
     }
 
     .btntext {
-            width: ${px2vw(172)};
-            height: ${px2vw(48)};
-            
-            font-size: ${px2vw(14)};
+        width: ${px2vw(172)};
+        height: ${px2vw(48)};
+        
+        font-size: ${px2vw(14)};
 
-            margin-left: 85.5%;
-            padding: ${px2vw(12)} ${px2vw(24)};
+        margin-left: 85.5%;
+        padding: ${px2vw(12)} ${px2vw(24)};
 
-            margin-bottom: 16px;
+        margin-bottom: 16px;
+
+        &:disabled {
+            background: ${({ theme }) => theme.COLORS.TOMATO_400};
         }
+    }
 `;
 
 export const Dish = styled.div`

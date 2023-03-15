@@ -16,6 +16,6 @@ export const Conteiner = styled.button`
     margin-top: 10px;
 
     &:disabled {
-        opacity: 0.5;
+        background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
     }
 `;

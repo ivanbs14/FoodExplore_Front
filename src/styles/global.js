@@ -33,7 +33,7 @@ export default createGlobalStyle`
         outline: none;
     }
 
-    button, h1, span {
+    button, h1, span, a, strong {
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
         font-size: 16px;
@@ -44,12 +44,17 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
+    a:hover {
+        filter: brightness(0.5);
+    }
+
     button, a {
         cursor: pointer;
         transition: filter 0.2s;
     }
-    
-    button:hover, a:hover {
-        filter: brightness(0.5);
+
+    button:hover {
+        background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
     }
+    
 `;
