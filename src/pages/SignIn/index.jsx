@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import { Conteiner, Form } from "./styles";
 
 import BackgroundImg from '../../assets/LogFoodExplorer.png';
@@ -32,7 +33,7 @@ export function SignIn() {
 
                 <Button title="Entrar"/>
 
-                <a href="#">Criar uma conta</a>
+                <Link to="/register">Criar uma conta</Link>
             </Form>
         </Conteiner>
     );
