@@ -9,16 +9,8 @@ export default createGlobalStyle`
     }
 
     :root {
-    font-size: ${px2vw(24)};
-
-    @media (min-width: 768px) {
-      font-size: ${px2vw(18)};
+        font-size: ${px2vw(24)};
     }
-
-    @media (min-width: 1024px) {
-      font-size: ${px2vw(16)};
-    }
-  }
 
     body {
         background-color: ${({ theme }) => theme.COLORS.Dark_400};
@@ -29,14 +21,14 @@ export default createGlobalStyle`
     body, textarea, p, input {
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
-        font-size: 16px;
+        font-size: ${px2vw(16)};
         outline: none;
     }
 
     button, h1, span, a, strong {
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
-        font-size: 16px;
+        font-size: ${px2vw(16)};
         outline: none;
     }
 
