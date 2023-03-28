@@ -1,6 +1,8 @@
-
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Conteiner, Form } from "./styles";
+
+import { useAuth } from "../../hooks/auth";
 
 import BackgroundImg from '../../assets/LogFoodExplorer.png';
 
@@ -9,6 +11,14 @@ import { Button } from '../../components/Button';
 import { Section } from '../../components/Section';
 
 export function SignIn() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { signIn } = useAuth();
+
+    function handleSignIn() {
+        signIn({ email, password });
+    }
 
     return (
         <Conteiner>
@@ -21,6 +31,7 @@ export function SignIn() {
                     <Input 
                         placeholder="Exemplo: exemplo@exemplo.com.br"
                         type="text"
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </Section>
                 
@@ -28,10 +39,11 @@ export function SignIn() {
                     <Input 
                         placeholder="No mínimo 6 caracteres"
                         type="text"
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </Section>
 
-                <Button title="Entrar"/>
+                <Button title="Entrar" onClick={handleSignIn}/>
 
                 <Link to="/register">Criar uma conta</Link>
             </Form>
