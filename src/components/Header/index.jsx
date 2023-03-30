@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 import { Conteiner, Content, Search } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -11,6 +12,8 @@ import { Input } from "../Input";
 import { Button } from "../Button"
 
 export function Header() {
+    const { signOut } = useAuth();
+
     return (
         <Conteiner>
             <Content>
@@ -33,7 +36,7 @@ export function Header() {
                     Novo prato
                 </Button>
                 
-                <Link to="/EditDishes">
+                <Link onClick={signOut}>
                     <img src={SignOut} alt="Logo" />
                 </Link>
             </Content>

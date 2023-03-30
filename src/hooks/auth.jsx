@@ -1,8 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { api } from '../services/api';
 
-const AuthContext = createContext({});
+export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
     const [data, setData] = useState({});
@@ -12,12 +12,15 @@ function AuthProvider({ children }) {
         try {
             const response = await api.post("/sessions", { email, password });
             const { user, token } = response.data;
+
+            localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
+            localStorage.setItem("@foodexplorer:token", token);
             
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData({ user, token })
             
         } catch (error) {
-            if (error.response) {
+            if(error.response) {
                 alert(error.response.data.message);
             }else {
                 alert("Não foi possível entrar.")
@@ -26,8 +29,51 @@ function AuthProvider({ children }) {
 
     }
 
+    function signOut() {
+        localStorage.removeItem("@foodexplorer:token");
+        localStorage.removeItem("@foodexplorer:user");
+
+       setData({});
+    }
+
+    async function updateProfile({ dish, imgDishFile}) {
+        try {
+            
+            await api.put("/dish", dish);
+            localStorage.setItem("@foodexplorer:dish", JSON.stringify(dish));
+
+            /* setData({ dish, token: data.token}) */
+            alert("Perfil atualizado!")
+        } catch (error) {
+            if (error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert("Não foi possível atualizar o perfil.")
+            }
+        }
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem("@foodexplorer:token");
+        const user = localStorage.getItem("@foodexplorer:user");
+
+        if (token && user) {
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+            setData({ token,
+                user: JSON.parse(user)
+            });
+        }
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ signIn, user: data.user }}>
+        <AuthContext.Provider value={{ 
+            signIn, 
+            signOut,
+            updateProfile,
+            user: data.user 
+        }}
+        >
             {children}
         </AuthContext.Provider>
     )
