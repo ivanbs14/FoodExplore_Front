@@ -165,18 +165,18 @@ export const Dish = styled.div`
         margin-top: ${px2vw(16)};
 
         cursor: pointer;
-    }
-
-    svg {
-        width: ${px2vw(24)};
-        height: ${px2vw(24)};
-    }
-
-    span {
-        font-size: ${px2vw(14)};
-    }
-
-    #avatar {
-        display: none;
+        
+        svg {
+            width: ${px2vw(24)};
+            height: ${px2vw(24)};
+        }
+        
+        span {
+            font-size: ${px2vw(14)};
+        }
+        
+        #avatar {
+            display: none;
+        }
     }
 `;

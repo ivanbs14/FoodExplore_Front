@@ -10,7 +10,7 @@ function AuthProvider({ children }) {
     async function signIn({ email, password }) {
         
         try {
-            const response = await api.post("/sessions", { email, password });
+            const response = await api.post("/authentication", { email, password });
             const { user, token } = response.data;
 
             localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
@@ -36,23 +36,6 @@ function AuthProvider({ children }) {
        setData({});
     }
 
-    async function updateProfile({ dish, imgDishFile}) {
-        try {
-            
-            await api.put("/dish", dish);
-            localStorage.setItem("@foodexplorer:dish", JSON.stringify(dish));
-
-            /* setData({ dish, token: data.token}) */
-            alert("Perfil atualizado!")
-        } catch (error) {
-            if (error.response) {
-                alert(error.response.data.message);
-            } else {
-                alert("Não foi possível atualizar o perfil.")
-            }
-        }
-    }
-
     useEffect(() => {
         const token = localStorage.getItem("@foodexplorer:token");
         const user = localStorage.getItem("@foodexplorer:user");
@@ -70,7 +53,6 @@ function AuthProvider({ children }) {
         <AuthContext.Provider value={{ 
             signIn, 
             signOut,
-            updateProfile,
             user: data.user 
         }}
         >

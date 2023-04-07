@@ -19,40 +19,42 @@ import { Button } from "../../components/Button"
 import { NotItens } from "../../components/NotItens"
 
 export function NewDishes() {
-    const { dish, updateProfile } = useAuth();
+    /* const { user, updateProfile } = useAuth(); */
 
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState();
     const [description, setDescription] = useState("");
 
-    const [imgDish, setImgDish] = useState(null);
-    const [imgDishFile, setImgDishFile] = useState(null);
+    const [img_dish, setImgDish] = useState(null);
+    const [file, setFile] = useState(null);
 
     const [ingredients, setIngredients] = useState([]);
     const [newIngredients, setNewIngredients] = useState([]);
 
-    const navigate = useNavigate();
+    function handleChangeImg(event) {
+        const fileImg = event.target.files[0];
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("img_dish", fileImg)
+        setFile(fileUploadForm);
 
-    async function handleUpdate() {
-        const dish = {
+        const imagePreview = URL.createObjectURL(fileImg);
+        setImgDish(imagePreview);
+    };
+
+    async function handleNewDish() {
+        const response = await api.post("/dish", {
             title,
             category,
             ingredients,
             price,
             description,
-        }
-
-        await updateProfile({ dish, imgDishFile });
-    }
-
-    function handleChangeImg(event) {
-        const file = event.target.files[0];
-        setImgDishFile(file);
-
-        const imagePreview = URL.createObjectURL(file);
-        setImgDish(imagePreview);
-    }
+        });
+        
+        await api.patch(`/dish/${response.data.id}`, file );
+        alert("Nota criada com sucesso!");
+    };
+    
 
     function handleAddProduct() {
         setIngredients(prevState => [...prevState, newIngredients]);
@@ -63,18 +65,6 @@ export function NewDishes() {
         setIngredients(prevState => prevState.filter(ingredients => ingredients !== deleted));
     }
 
-    async function handleNewDish() {
-        await api.post("/dish", {
-            title,
-            category,
-            ingredients,
-            price,
-            description,
-        });
-
-        alert("Nota criada com sucesso!");
-    };
-
     return (
         <Conteiner>
                 <Header />
@@ -82,16 +72,15 @@ export function NewDishes() {
                 <ButtonText title={"voltar"}/>
 
                 <h1>Adicionar prato</h1>
-
                 <div className="lineOne">
                     <Section title={"Imagem do prato"}>
                         <Dish>
                             <label htmlFor="dish">
                                 <FiUpload />
                                 <span>Selecione imagem</span>
-
+                            
                                 <input 
-                                    id='avatar'
+                                    id='dish'
                                     type="file"
                                     onChange={handleChangeImg}
                                 />

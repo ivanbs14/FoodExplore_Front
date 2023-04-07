@@ -164,6 +164,8 @@ export const Content = styled.div`
 `;
 
 export const Dish = styled.div`
+    position: relative;
+
     > label {
         height: ${px2vw(48)};
 
@@ -173,14 +175,17 @@ export const Dish = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 5px;
 
         margin-top: ${px2vw(16)};
+        padding: 12px 32px;
 
         cursor: pointer;
 
-        #avatar {
-            display: none;
+        position: absolute;
+        
+        span {
+            font-size: ${px2vw(14)};
         }
 
         svg {
@@ -188,8 +193,9 @@ export const Dish = styled.div`
             height: ${px2vw(24)};
         }
 
-        span {
-            font-size: ${px2vw(14)};
+        
+        input{
+            display: none;
         }
     }
 `;
