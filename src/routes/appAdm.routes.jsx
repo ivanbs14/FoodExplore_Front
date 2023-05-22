@@ -8,10 +8,10 @@ import { MenuAdm } from '../pages/MenuAdm';
 export function AppRoutes() {
     return(
         <Routes>
-            <Route path="/dishesPreviewAdm" element={<DishesPreviewAdm />}/>
-            <Route path="/editDishes" element={<EditDishes />}/>
-            <Route path="/" element={<NewDishes />}/>
-            <Route path="/MenuAdm" element={<MenuAdm />}/>
+            <Route path="/dishesPreviewAdm/:id" element={<DishesPreviewAdm />}/>
+            <Route path="/editDishes/:id" element={<EditDishes />}/>
+            <Route path="/newDishes" element={<NewDishes />}/>
+            <Route path="/" element={<MenuAdm />}/>
 
         </Routes>
     )

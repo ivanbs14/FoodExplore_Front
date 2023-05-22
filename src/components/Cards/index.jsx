@@ -1,12 +1,18 @@
 import { Conteiner } from "./styles";
 
 import { TfiPencil } from "react-icons/tfi"
-
-export function Cards({ nimg, title, subscript, value }) {
+import { ButtonEdit } from '../ButtonEdit';
+export function Cards({ nimg, title, subscript, value, subs, event }) {
     return (
         <Conteiner>
-            <TfiPencil id="stwo"/>
-            <img src={nimg} alt="macarrão com camarão" />
+            <ButtonEdit
+                icon={TfiPencil}
+                id="dish"
+                onClick={event}
+            />
+    
+            <img src={nimg} alt={subs} />
+
             <strong>
                 {title}
             </strong>

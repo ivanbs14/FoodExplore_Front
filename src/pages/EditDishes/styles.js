@@ -10,13 +10,6 @@ export const Conteiner = styled.div`
     
     background-color: ${({ theme }) => theme.COLORS.Dark_400};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    
-    .tags {
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: ${px2vw(16)};
-    }
 
     div {
         .adm {
@@ -30,20 +23,6 @@ export const Conteiner = styled.div`
 export const Content = styled.div`
     padding: ${px2vw(32)} ${px2vw(123)} 0;
 
-    a {
-        font-weight: 700;
-        font-size: ${px2vw(24)};
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
-
-        display: flex;
-        align-items: center;
-
-        svg {
-            width: 50px;
-            height: 50px;
-        }
-    }
-
     h1 {
         font-weight: 500;
         font-size: ${px2vw(32)};
@@ -53,31 +32,14 @@ export const Content = styled.div`
         margin: ${px2vw(24)} 0 0;
     }
 
-    .tag {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .preco {
-            margin-top: ${px2vw(16)};
-            border-radius: 8px;
-            background: ${({ theme }) => theme.COLORS.Dark_800};
-        }
-    }
-
-    .tags {
-        border-radius: 8px;
-
-        margin-top: ${px2vw(16)};
-        padding: 6px 8px;
-
-        background: ${({ theme }) => theme.COLORS.Dark_800};
+    button:nth-child(1) {
+        font-weight: 700;
+        font-size: ${px2vw(24)};
     }
 
     section:nth-child(1) {
         width: 100%;
         margin-right: ${px2vw(32)};
-        background: ${({ theme }) => theme.COLORS.Dark_400};
     }
 
     section {
@@ -92,8 +54,9 @@ export const Content = styled.div`
         display: grid;
         grid-template-columns: ${px2vw(229)} auto ${px2vw(364)};
         gap: 32px;
-
+        
         section {
+
             div {
                 input {
                     width: 100%;
@@ -102,6 +65,7 @@ export const Content = styled.div`
         }
 
         section {
+            
             input {
                 width: ${px2vw(360)};
                 margin-top: ${px2vw(16)};
@@ -110,9 +74,76 @@ export const Content = styled.div`
             }
         }
 
+        section:nth-child(3){
+            width: ${px2vw(360)};
+
+            div{
+                width: ${px2vw(360)};
+                height: ${px2vw(48)};
+
+                display: flex;
+
+                margin-top: ${px2vw(16)};
+                padding: 13px 16px;
+                border: none;
+                border-radius: 8px;
+
+                background-color: ${({ theme }) => theme.COLORS.Dark_800};
+
+            }
+
+            select {
+                width: 100%;
+
+                border: none;
+                
+                font-weight: 400;
+                font-size: 14px;
+                
+                color: ${({ theme }) => theme.COLORS.LIGHT_400};
+                background: none;
+
+                cursor: pointer;
+            }
+        }
+        
+
         div {
             width: 100%;
         }
+    }
+
+    .lineTwo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .tags {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: ${px2vw(16)};
+
+            border-radius: 8px;
+
+            margin-top: ${px2vw(16)};
+            padding: 6px 8px;
+
+            background: ${({ theme }) => theme.COLORS.Dark_800};
+        }
+
+        section:nth-child(2) {
+            width: ${px2vw(251)};
+            
+            .preco {
+                width: ${px2vw(251)};
+                margin-top: ${px2vw(16)};
+                border-radius: 8px;
+                background: ${({ theme }) => theme.COLORS.Dark_800};
+            }
+        }
+
     }
 
     .btntext {
@@ -121,8 +152,14 @@ export const Content = styled.div`
         
         font-size: ${px2vw(14)};
 
-        /* margin-left: 85.5%; */
+        margin-left: 85.5%;
         padding: ${px2vw(12)} ${px2vw(24)};
+
+        margin-bottom: 16px;
+
+        &:disabled {
+            background: ${({ theme }) => theme.COLORS.TOMATO_400};
+        }
     }
 
     .btns {
@@ -147,10 +184,11 @@ export const Content = styled.div`
             padding: ${px2vw(12)} ${px2vw(24)};
         }
     }
-
 `;
 
 export const Dish = styled.div`
+    position: relative;
+
     > label {
         height: ${px2vw(48)};
 
@@ -160,22 +198,26 @@ export const Dish = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 5px;
 
         margin-top: ${px2vw(16)};
+        padding: 12px 32px;
 
         cursor: pointer;
-        
-        svg {
-            width: ${px2vw(24)};
-            height: ${px2vw(24)};
-        }
+
+        position: absolute;
         
         span {
             font-size: ${px2vw(14)};
         }
+
+        svg {
+            width: ${px2vw(24)};
+            height: ${px2vw(24)};
+        }
+
         
-        #avatar {
+        input{
             display: none;
         }
     }

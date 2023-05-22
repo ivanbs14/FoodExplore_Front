@@ -2,21 +2,19 @@ import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
 
 export const Conteiner = styled.div`
-        width: 304px;
-        height: 462px;
+    width: 304px;
+    height: 462px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        margin-bottom: 48px;
+    margin-bottom: 48px;
 
-        background-color: ${({ theme }) => theme.COLORS.Dark_200};
+    background-color: ${({ theme }) => theme.COLORS.Dark_200};
 
-    #stwo {
-        margin-top: 16px;
-        margin-left: 80%;
-        font-size: 24px;
+    #dish {
+        margin-left: 85%;
     }
 
     img {
@@ -42,6 +40,8 @@ export const Conteiner = styled.div`
 
     p{
         font-size: 14px;
+        text-align: center;
+        padding: 0px 24px;
     }
 
     h1 {

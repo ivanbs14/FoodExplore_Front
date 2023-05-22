@@ -19,7 +19,6 @@ import { Button } from "../../components/Button"
 import { NotItens } from "../../components/NotItens"
 
 export function NewDishes() {
-    /* const { user, updateProfile } = useAuth(); */
 
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
@@ -43,6 +42,10 @@ export function NewDishes() {
     };
 
     async function handleNewDish() {
+        if(newIngredients) {
+            return alert("Você não digitou um ingrediente, mas não clicou em adicionar.");
+        }
+
         const response = await api.post("/dish", {
             title,
             category,
@@ -52,7 +55,7 @@ export function NewDishes() {
         });
         
         await api.patch(`/dish/${response.data.id}`, file );
-        alert("Nota criada com sucesso!");
+        alert("Prato criado com sucesso!");
     };
     
 
@@ -67,7 +70,12 @@ export function NewDishes() {
 
     return (
         <Conteiner>
-                <Header />
+                <Header>
+                    <Input 
+                        placeholder="Busque por pratos ou ingredientes"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </Header>
             <Content>
                 <ButtonText title={"voltar"}/>
 

@@ -46,6 +46,7 @@ export const Content = styled.div`
         align-items: flex-end;
         
         margin-top: ${px2vw(172)};
+        margin-bottom: 63px;
         padding: ${px2vw(87)} ${px2vw(101)} 0;
         border-radius: 8px;
 
@@ -57,76 +58,70 @@ export const Content = styled.div`
     }
 `;
 
-export const Cont = styled.div`
-    margin-top: 42px;
-
-    display: flex;
-    flex-direction: column;
-
-    >section {
+export const Cont = styled.div`   
+    section {
+        position: relative;
+        max-width: 83vw;
 
         h2 {
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             font-size: 32px;
+
+            margin-bottom: 23px;
         }
-    }
-
-    .menucard {
-        display: flex;
-        gap: 27px;
-
-        margin-top: 27px;
-    }
-
-    .cards {
-        width: 304px;
-        height: 462px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        margin-bottom: 48px;
-
-        background-color: ${({ theme }) => theme.COLORS.Dark_200};
-    }
-
-    #stwo {
-        margin-top: 16px;
-        margin-left: 80%;
-        font-size: 24px;
-    }
-
-    img {
-        width: 176px;
-        margin: 26px 0 15px 0;
-    }
-
-    strong {
-        font-weight: 700;
-        font-size: 24px;
-
-        display: flex;
-        align-items: center;
-
-        margin-bottom: 15px;
-
-        svg {
-            font-size: 30px;
-        }
-    }
-
-    p{
-        font-size: 14px;
-    }
-
-    h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 32px;
         
-        margin-top: 15px;
+        .menucard {
+            display: flex;
+            gap: 27px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
 
-        color: ${({ theme }) => theme.COLORS.CAKE_200};
+            div {
+                flex: none;
+            }
+        }
+
+        .menucard::-webkit-scrollbar {
+            display: none;
+
+        }
+
+        .buttons {
+            /* border: 1px solid red; */
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            top: 20%;
+
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+
+            svg {
+                font-size: 40px;
+            }
+            
+            .backgroundLeft, .backgroundRight {
+                position: absolute;
+                width: 15%;
+                height: 115%;
+    
+                display: flex; 
+                top: -45px;
+                z-index: -1;
+            }
+            
+            .backgroundRight {
+                left: 85%;
+                background: linear-gradient(90deg, rgba(0, 10, 15, 0.372541) 0%, #000A0F 100%);
+            }
+            
+            .backgroundLeft {
+                background: linear-gradient(90deg, rgba(0, 10, 15, 0.372541) 0%, #000A0F 100%);
+                transform: matrix(-1, 0, 0, 1, 0, 0);
+            }
+        }
+
     }
 `;

@@ -1,47 +1,99 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 
-import { RxCaretLeft } from "react-icons/rx"
+import { api } from "../../services/api";
+import { apiImg } from "../../services/apiImg";
 
-import imgTeste from "../../assets/Mask group.png"
+import { RxCaretLeft } from "react-icons/rx"
 
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import { ButtonText } from "../../components/ButtonText"
 import { Button } from "../../components/Button"
+import { Input } from "../../components/Input"
 
 export function DishesPreviewAdm() {
+    const [dish, setDish] = useState([]);
+
+    const [search, setSearch] = useState("");
+    const [idDish, setIdDish] = useState();
+    const [allingredients, setAllIngredients] = useState([]);
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+    function handleEditDishes(id) {
+        navigate(`/editDishes/${id}`);
+    };
+
+    useEffect(() => {
+        async function fetchDish() {
+            const response = await api.get(`/dish/${params.id}`);
+            setDish(response.data);
+        }
+
+        fetchDish();
+    }, [])
+
+    useEffect(() => {
+        async function fetchIngredients() {
+            dish.map(ingred => (
+                setAllIngredients(ingred.ingredients)
+            ))
+        }
+
+        fetchIngredients();
+    }, [dish]);
+
     return (
         <Conteiner>
-                <Header />
+                <Header>
+                    <Input 
+                        placeholder="Busque por pratos ou ingredientes"
+                        /* onChange={(e) => setSearch(e.target.value)} */
+                    />
+                </Header>
             <Content>
-                <Link to="/EditDishes">
+                <Link to="/">
                     <RxCaretLeft />
                     voltar
                 </Link>
             
-                <Cont>
-                    <img src={imgTeste} alt="imagem do prato" />
+                {
+                    dish.map(rush => (
+                    <Cont>
+                        <img 
+                            src={`${apiImg.defaults.baseURL}/files/${rush.img_dish}`} 
+                            alt="imagem do prato" 
+                        />
 
-                    <div className="itens">
-                        <h1>Salada Ravanello</h1>
+                        <div className="itens">
+                            <h1>{rush.title}</h1>
 
-                        <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. 
-                            O pão naan dá um toque especial.</p>
-                    
-                        <div className="products">
-                            <ButtonText title={"alface"}/>
-                            <ButtonText title={"cebola"}/>
-                            <ButtonText title={"pão naan"}/>
-                            <ButtonText title={"pepino"}/>
-                            <ButtonText title={"rabanete"}/>
-                            <ButtonText title={"tomate"}/>
+                            <p>{rush.description}</p>
+                        
+                            <div className="products">
+                                {
+                                    allingredients.map((ingredients, index) => (
+                                        <ButtonText 
+                                            key={String(index)}
+                                            title={ingredients.name}
+                                        />
+                                    ))
+                                }
+                            </div>
+
+                            <Button 
+                                className="btn" 
+                                onClick={() => handleEditDishes(rush.id)}
+                                title={"Editar prato"} 
+                            />
                         </div>
 
-                        <Button className="btn" to="/EditDishes" title={"Editar prato"} />
-                    </div>
-
-                </Cont>
+                    </Cont>
+                    ))
+                }
 
             </Content>
             <Footer />

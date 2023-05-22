@@ -93,7 +93,7 @@ export const Cont = styled.div`
             font-weight: 500;
             font-size: 14px;
 
-            padding: 12px ${px2vw(24)};
+            padding: ${px2vw(12)} ${px2vw(20)};
         }
     }
 

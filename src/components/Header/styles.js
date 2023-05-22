@@ -60,14 +60,21 @@ export const Search = styled.div`
     border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
 
     background-color: ${({theme}) => theme.COLORS.Dark_900};
 
     svg {
-        width: 24px;
-        height: 24px;
+        font-size: 30px;
+
+        margin-left: 20%;
+    }
+
+    input {
+        color: ${({theme}) => theme.COLORS.LIGHT_500};
+    }
+    
+    svg {
+        color: ${({theme}) => theme.COLORS.LIGHT_400};
     }
 
 `;

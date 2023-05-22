@@ -8,10 +8,9 @@ import { BsReceiptCutoff } from "react-icons/bs";
 import ImgLogo from "../../assets/LogFoodExplorer.png"
 import SignOut from "../../assets/SignOut.png"
 
-import { Input } from "../Input";
 import { Button } from "../Button"
 
-export function Header() {
+export function Header({ children }) {
     const { signOut } = useAuth();
 
     return (
@@ -24,10 +23,9 @@ export function Header() {
 
                 <Search>
                     <AiOutlineSearch />
-                    <Input 
-                        placeholder="Busque por pratos ou ingredientes"
-                        onChange={(e) => setSearch(e.target.value)}
-                        />
+                    <Search>
+                        {children}
+                    </Search>
                 </Search>
 
                 {/* Trocar button por Link, mais a frente */}
