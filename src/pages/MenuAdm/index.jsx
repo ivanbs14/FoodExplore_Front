@@ -8,13 +8,14 @@ import { apiImg } from "../../services/apiImg";
 
 import { useAuth } from "../../hooks/auth";
 
-import imgMenu from "../../assets/imgMenu.png"
+import imgMenu from "../../assets/imgMenu.png";
 
-import { Header } from "../../components/Header"
-import { Footer } from "../../components/Footer"
-import { Section } from "../../components/Section"
-import { Cards } from "../../components/Cards"
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { Section } from "../../components/Section";
+import { Cards } from "../../components/Cards";
 import { ButtonEdit } from '../../components/ButtonEdit';
+import { Input } from '../../components/Input';
 
 export function MenuAdm() {
     const { user } = useAuth();
@@ -94,7 +95,12 @@ export function MenuAdm() {
 
     return (
         <Conteiner>
-            <Header />
+            <Header>
+                <Input 
+                    placeholder="Busque por pratos ou ingredientes"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </Header>
             <Content>
                 <img className="imgMenu" src={imgMenu} alt="" />
                 <div className="titulo">
@@ -149,6 +155,7 @@ export function MenuAdm() {
                                         title={food.title}
                                         subscript={food.description}
                                         value={food.price}
+                                        event={() => setDishSelect(food.id)}
                                     />
                                 ))
                             }
@@ -182,6 +189,7 @@ export function MenuAdm() {
                                         title={food.title}
                                         subscript={food.description}
                                         value={food.price}
+                                        event={() => setDishSelect(food.id)}
                                     />
                                 ))
                             }

@@ -12,6 +12,8 @@ export const Conteiner = styled.div`
     margin-bottom: 48px;
 
     background-color: ${({ theme }) => theme.COLORS.Dark_200};
+    border: 1px solid #000204;
+    border-radius: 8px;
 
     #dish {
         margin-left: 85%;

@@ -10,7 +10,7 @@ import SignOut from "../../assets/SignOut.png"
 
 import { Button } from "../Button"
 
-export function Header({ children }) {
+export function Header({ children, newDish }) {
     const { signOut } = useAuth();
 
     return (
@@ -29,7 +29,7 @@ export function Header({ children }) {
                 </Search>
 
                 {/* Trocar button por Link, mais a frente */}
-                <Button to={"/"} title={"Novo prato"}>
+                <Button to={newDish} title={"Novo prato"}>
                     <BsReceiptCutoff />
                     Novo prato
                 </Button>

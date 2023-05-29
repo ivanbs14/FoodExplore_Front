@@ -73,6 +73,8 @@ export const Cont = styled.div`
         
         .menucard {
             display: flex;
+
+            padding: 0 50px;
             gap: 27px;
             overflow-x: auto;
             scroll-behavior: smooth;
@@ -84,11 +86,9 @@ export const Cont = styled.div`
 
         .menucard::-webkit-scrollbar {
             display: none;
-
         }
 
         .buttons {
-            /* border: 1px solid red; */
             position: absolute;
             width: 100%;
             height: 70%;
@@ -104,7 +104,7 @@ export const Cont = styled.div`
             
             .backgroundLeft, .backgroundRight {
                 position: absolute;
-                width: 15%;
+                width: 5%;
                 height: 115%;
     
                 display: flex; 
@@ -113,7 +113,7 @@ export const Cont = styled.div`
             }
             
             .backgroundRight {
-                left: 85%;
+                left: 95%;
                 background: linear-gradient(90deg, rgba(0, 10, 15, 0.372541) 0%, #000A0F 100%);
             }
             
