@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Conteiner, Content, Dish } from "./styles";
 
 import { FiUpload } from 'react-icons/fi';
@@ -19,7 +19,10 @@ import { Button } from "../../components/Button"
 import { NotItens } from "../../components/NotItens"
 
 export function NewDishes() {
+    const { user, signOut } = useAuth();
 
+    const navigate = useNavigate();
+    
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState();
@@ -30,6 +33,10 @@ export function NewDishes() {
 
     const [ingredients, setIngredients] = useState([]);
     const [newIngredients, setNewIngredients] = useState([]);
+
+    function handleMenu() {
+        navigate(-1);
+    };
 
     function handleChangeImg(event) {
         const fileImg = event.target.files[0];
@@ -56,6 +63,7 @@ export function NewDishes() {
         
         await api.patch(`/dish/${response.data.id}`, file );
         alert("Prato criado com sucesso!");
+        navigate(-1);
     };
     
 
@@ -68,16 +76,23 @@ export function NewDishes() {
         setIngredients(prevState => prevState.filter(ingredients => ingredients !== deleted));
     }
 
+    function handleLogout() {
+        navigate(-1);
+        signOut();
+    }
+
     return (
         <Conteiner>
-                <Header>
+                <Header
+                    eventss={handleLogout}
+                >
                     <Input 
                         placeholder="Busque por pratos ou ingredientes"
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </Header>
             <Content>
-                <ButtonText title={"voltar"}/>
+                <ButtonText title={"voltar"} onClick={handleMenu}/>
 
                 <h1>Adicionar prato</h1>
                 <div className="lineOne">

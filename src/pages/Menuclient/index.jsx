@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
+import { BsReceiptCutoff } from "react-icons/bs";
+
 import { useAuth } from "../../hooks/auth";
 
 import { api } from "../../services/api";
@@ -16,7 +18,7 @@ import { Cards } from "../../components/Cards";
 import { ButtonEdit } from '../../components/ButtonEdit';
 import { Input } from '../../components/Input';
 
-export function MenuAdm() {
+export function MenuClient() {
     const { signOut } = useAuth();
 
     const navigate = useNavigate();
@@ -65,32 +67,32 @@ export function MenuAdm() {
     /* Search by category */
     useEffect(() => {
         async function getMeals() {
-            const response = await api.get(`/dish/?category=${filterRefeiçoes}`);
+            const response = await api.get(`/Client/?category=${filterRefeiçoes}`);
             setMeals(response.data);
         }
 
         getMeals();
 
         async function getDesserts() {
-            const response = await api.get(`/dish/?category=${filterSobremesas}`);
+            const response = await api.get(`/Client/?category=${filterSobremesas}`);
             setDesserts(response.data);
         }
         
         getDesserts();
         
         async function getDrinks() {
-            const response = await api.get(`/dish/?category=${filterBebidas}`);
+            const response = await api.get(`/Client/?category=${filterBebidas}`);
             setDrinks(response.data);
         }
         
         getDrinks();
     }, [])
 
-    useEffect(() => {
+   /*  useEffect(() => {
         if (dishSelect) {
             navigate(`/dishesPreviewAdm/${dishSelect}`);
         }
-    }, [dishSelect])
+    }, [dishSelect]) */
 
     function handleLogout() {
         navigate("/");
@@ -106,8 +108,8 @@ export function MenuAdm() {
             <Header
                 eventss={handleLogout}
                 events={newDish}
-                btnTitle={"Novo prato"}
-                titleAdm={"admin"}
+                btnLogo={< BsReceiptCutoff />}
+                btnTitle={"Pedidos (0)"}
             >
             <Input 
                 placeholder="Busque por pratos ou ingredientes"

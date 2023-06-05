@@ -6,8 +6,6 @@ import { api } from '../services/api';
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
-    
-
     const [data, setData] = useState({});
     
     async function signIn({ email, password }) {
@@ -20,7 +18,7 @@ function AuthProvider({ children }) {
             localStorage.setItem("@foodexplorer:token", token);
             
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            setData({ user, token })
+            setData({ user, token });
             
         } catch (error) {
             if(error.response) {
@@ -29,7 +27,6 @@ function AuthProvider({ children }) {
                 alert("Não foi possível entrar.")
             }
         }
-
     }
 
     function signOut() {
@@ -47,7 +44,7 @@ function AuthProvider({ children }) {
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             setData({ token,
-                user: JSON.parse(user)
+                user: JSON.parse(user),
             });
         }
     }, []);
@@ -56,7 +53,7 @@ function AuthProvider({ children }) {
         <AuthContext.Provider value={{ 
             signIn, 
             signOut,
-            user: data.user 
+            user: data.user,
         }}
         >
             {children}

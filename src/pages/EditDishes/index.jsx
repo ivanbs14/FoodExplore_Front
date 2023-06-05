@@ -113,15 +113,6 @@ export function EditDishes() {
         atualizationIngred();
     }, [newIngredient])
 
-
-    /* useEffect(() => {
-        async function log() {
-            console.log(allIngredientsExisting);
-        }
-
-        log();
-    }, [dish]) */
-
     return (
         <Conteiner>
                 <Header>

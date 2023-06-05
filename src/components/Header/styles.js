@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import px2vw from "../../utils/px2vw";
+import { Link } from "react-router-dom";
 
 export const Conteiner = styled.div`
     width: 100%;
@@ -31,13 +32,13 @@ export const Content = styled.div`
     align-items: center;
     gap: ${px2vw(32)};
 
-    a {
+    /* a {
         display: flex;
         align-items: center;
 
         width: 32px;
         height: 32px;
-    }
+    } */
     
     button {
         width: ${px2vw(216)};
@@ -76,16 +77,33 @@ export const Search = styled.div`
     svg {
         color: ${({theme}) => theme.COLORS.LIGHT_400};
     }
-
 `;
 
-/* export const Logout = styled.div`
-    border: none;
+export const NewNote = styled(Link)`
+    width: ${px2vw(216)};
+    height: ${px2vw(56)};
 
-    cursor: pointer;
+    border-radius: 5px;
+    
+    background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     svg {
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-size: ${px2vw(32)};
+        width: 26px;
+        height: 22px;
+        
+        margin-right: 8px;
     }
-`; */
+
+    a {
+        display: flex;
+        align-items: center;
+
+        width: 60px;
+        height: 32px;
+    }
+`;

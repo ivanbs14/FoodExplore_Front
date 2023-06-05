@@ -1,24 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
-import { Conteiner, Content, Search } from "./styles";
+import { Conteiner, Content, Search, NewNote } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BsReceiptCutoff } from "react-icons/bs";
 
-import ImgLogo from "../../assets/LogFoodExplorer.png"
-import SignOut from "../../assets/SignOut.png"
+import ImgLogo from "../../assets/LogFoodExplorer.png";
+import SignOut from "../../assets/SignOut.png";
 
-import { Button } from "../Button"
-
-export function Header({ children, newDish }) {
-    const { signOut } = useAuth();
+export function Header({ children, eventss, btnTitle, btnLogo, titleAdm }) {
+    const { user } = useAuth();
 
     return (
         <Conteiner>
             <Content>
                 <div className="logs">
                     <img src={ImgLogo} alt="Logo" />
-                    <a className="adm hide" href="#">admin</a>
+                    <a className="adm" href="#">{titleAdm}</a>
                 </div>
 
                 <Search>
@@ -28,13 +25,14 @@ export function Header({ children, newDish }) {
                     </Search>
                 </Search>
 
-                {/* Trocar button por Link, mais a frente */}
-                <Button to={newDish} title={"Novo prato"}>
-                    <BsReceiptCutoff />
-                    Novo prato
-                </Button>
+                {/* Pedidos (0) */}
+                {/* Novo pedido */}
+                <NewNote to="/new">
+                    {btnLogo}
+                    {btnTitle}
+                </NewNote>
                 
-                <Link onClick={signOut}>
+                <Link onClick={eventss}>
                     <img src={SignOut} alt="Logo" />
                 </Link>
             </Content>

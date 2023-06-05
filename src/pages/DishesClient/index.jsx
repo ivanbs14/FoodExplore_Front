@@ -1,5 +1,7 @@
 import { Conteiner, Content, Cont } from "./styles";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useAuth } from "../../hooks/auth";
 
 import imgTeste from "../../assets/Mask group.png"
 
@@ -9,9 +11,22 @@ import { ButtonText } from "../../components/ButtonText"
 import { Button } from "../../components/Button"
 
 export function DishesClient() {
+    const { signOut } = useAuth();
+
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        navigate("/");
+        signOut();
+    }
+
     return (
         <Conteiner>
-                <Header />
+            <Header
+                eventss={handleLogout}
+                btnTitle={"Pedidos (0)"}
+            > 
+            </Header>
             <Content>
                 <ButtonText title={"voltar"}/>
             
