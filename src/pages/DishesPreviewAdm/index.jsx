@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 
+import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { apiImg } from "../../services/apiImg";
 
@@ -14,6 +15,8 @@ import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
 
 export function DishesPreviewAdm() {
+    const { signOut } = useAuth();
+
     const [dish, setDish] = useState([]);
 
     const [search, setSearch] = useState("");
@@ -46,9 +49,19 @@ export function DishesPreviewAdm() {
         fetchIngredients();
     }, [dish]);
 
+    function handleLogout() {
+        navigate(-1);
+        signOut();
+    }
+
     return (
         <Conteiner>
-                <Header>
+                <Header
+                    btnTitle={"Novo prato"}
+                    eventss={handleLogout}
+                    events={`/newDishes`}
+                    titleAdm={"admin"}
+                >
                     <Input 
                         placeholder="Busque por pratos ou ingredientes"
                         /* onChange={(e) => setSearch(e.target.value)} */

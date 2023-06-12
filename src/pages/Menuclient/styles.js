@@ -91,7 +91,7 @@ export const Cont = styled.div`
         .buttons {
             position: absolute;
             width: 100%;
-            height: 70%;
+            height: 60%;
             top: 20%;
 
             display: flex;
@@ -99,7 +99,7 @@ export const Cont = styled.div`
             z-index: 2;
 
             svg {
-                font-size: 40px;
+                font-size: 60px;
             }
             
             .backgroundLeft, .backgroundRight {
@@ -111,17 +111,6 @@ export const Cont = styled.div`
                 top: -45px;
                 z-index: -1;
             }
-            
-            .backgroundRight {
-                left: 95%;
-                background: linear-gradient(90deg, rgba(0, 10, 15, 0.372541) 0%, #000A0F 100%);
-            }
-            
-            .backgroundLeft {
-                background: linear-gradient(90deg, rgba(0, 10, 15, 0.372541) 0%, #000A0F 100%);
-                transform: matrix(-1, 0, 0, 1, 0, 0);
-            }
         }
-
     }
 `;

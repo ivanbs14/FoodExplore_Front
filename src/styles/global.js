@@ -45,8 +45,8 @@ export default createGlobalStyle`
         transition: filter 0.2s;
     }
 
-    button:hover {
+    /* button:hover {
         background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
-    }
+    } */
     
 `;

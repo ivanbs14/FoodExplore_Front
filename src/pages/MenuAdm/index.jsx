@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
-import { useAuth } from "../../hooks/auth";
 
+import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { apiImg } from "../../services/apiImg";
 
@@ -93,21 +93,17 @@ export function MenuAdm() {
     }, [dishSelect])
 
     function handleLogout() {
-        navigate("/");
+        navigate(`/`);
         signOut();
-    }
-
-    function newDish() {
-        navigate(`/newDishes`);
     }
 
     return (
         <Conteiner>
             <Header
                 eventss={handleLogout}
-                events={newDish}
-                btnTitle={"Novo prato"}
+                events={`/newDishes`}
                 titleAdm={"admin"}
+                btnTitle={"Novo prato"}
             >
             <Input 
                 placeholder="Busque por pratos ou ingredientes"

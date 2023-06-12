@@ -19,6 +19,8 @@ import { Button } from "../../components/Button"
 import { NotItens } from "../../components/NotItens"
 
 export function EditDishes() {
+    const { signOut } = useAuth();
+
     const [search, setSearch] = useState("");
     const [dish, setDish] = useState();
 
@@ -29,11 +31,13 @@ export function EditDishes() {
     const [price, setPrice] = useState();
     const [description, setDescription] = useState("");
 
-    const [allIngredientsExisting, setAllIngredientsExisting] = useState([]);
-    const [ingredient, setIngredient] = useState("");
+    /* armazena ingredients do banco de dados */
+    const [dataIngredientsExisting, setDataIngredientsExisting] = useState([]);
+    const [allIngredientExisting, setAllIngredientExisting] = useState([]);
 
-    const [allIngredients, setAllIngredients] = useState([]);
+    /* recebe os novos ingredients digitados */
     const [newIngredient, setNewIngredient] = useState("");
+    const [allIngredients, setAllIngredients] = useState([]);
 
     const params = useParams();
     const navigate = useNavigate();
@@ -68,12 +72,21 @@ export function EditDishes() {
             category,
             price,
             description,
-            ingredient
+            allIngredients,
         });
 
         await api.patch(`/dish/${params.id}`, file );
         alert("Prato Atualizado com sucesso com sucesso!");
     };
+
+    async function deleteDish() {
+        const delet = await api.delete(`/dish/${params.id}`)
+    };
+
+    function handleLogout() {
+        navigate(-1);
+        signOut();
+    }
 
     useEffect(() => {
         async function fetchDish() {
@@ -83,39 +96,42 @@ export function EditDishes() {
 
         fetchDish();
     }, [])
-    
-    useEffect(() => {
-        async function dishDatas() {
-            const [dishData] = dish;
-            setTitle(dishData.title),
-            setCategory(dishData.category),
-            setPrice(dishData.price),
-            setDescription(dishData.description),
-            setAllIngredientsExisting(dishData.ingredients)
-        }
 
-        dishDatas();
-
-        async function dataIngredients() {
-            allIngredientsExisting.map(ingred => (
-                setIngredient(prevState => [...prevState, ingred.name])
-            ))
-        }
-
-        dataIngredients();
-    }, [dish])
-
-    useEffect(() => {
+    /* useEffect(() => {
         async function atualizationIngred() {
             setIngredient(allIngredients);
         }
 
         atualizationIngred();
-    }, [newIngredient])
+    }, [newIngredient]) */
+
+    useEffect(() => {
+        async function dataDish() {
+            dish.map((item) => {
+                setTitle(item.title);
+                setCategory(item.category);
+                setPrice(item.price);
+                setDescription(item.description);
+                setDataIngredientsExisting(item.ingredients)
+            })
+        }
+        dataDish();
+
+        async function dataIngredients() {
+            dataIngredientsExisting.map(ingred => (
+                setAllIngredientExisting(prevState => [...prevState, ingred.name])
+            ))
+        }
+        dataIngredients();
+
+    }, [dish])
 
     return (
         <Conteiner>
-                <Header>
+                <Header
+                    eventss={handleLogout}
+                    btnTitle={"Novo prato"}
+                >
                     <Input 
                         placeholder="Busque por pratos ou ingredientes"
                         onChange={(e) => setSearch(e.target.value)}
@@ -204,7 +220,9 @@ export function EditDishes() {
                 </Section>
 
                 <div className="btns">
-                    <Button title={"Excluir prato"}/>
+                    <Button title={"Excluir prato"}
+                        onClick={deleteDish}
+                    />
                     <Button 
                         title={"Salvar alterações"} 
                         onClick={handlePutDish}

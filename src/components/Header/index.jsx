@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
 import { Conteiner, Content, Search, NewNote } from "./styles";
@@ -7,7 +7,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import ImgLogo from "../../assets/LogFoodExplorer.png";
 import SignOut from "../../assets/SignOut.png";
 
-export function Header({ children, eventss, btnTitle, btnLogo, titleAdm }) {
+export function Header({ children, eventss, events, btnTitle, btnLogo, titleAdm }) {
     const { user } = useAuth();
 
     return (
@@ -25,9 +25,7 @@ export function Header({ children, eventss, btnTitle, btnLogo, titleAdm }) {
                     </Search>
                 </Search>
 
-                {/* Pedidos (0) */}
-                {/* Novo pedido */}
-                <NewNote to="/new">
+                <NewNote to={events}>
                     {btnLogo}
                     {btnTitle}
                 </NewNote>

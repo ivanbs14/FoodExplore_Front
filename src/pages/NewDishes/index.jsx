@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Conteiner, Content, Dish } from "./styles";
 
 import { FiUpload } from 'react-icons/fi';
 
 import { useAuth } from "../../hooks/auth";
-
 import { useNavigate } from "react-router-dom";
-
 import { api } from "../../services/api";
 
 import { Header } from "../../components/Header"
@@ -85,6 +83,8 @@ export function NewDishes() {
         <Conteiner>
                 <Header
                     eventss={handleLogout}
+                    titleAdm={"admin"}
+                    btnTitle={"Novo prato"}
                 >
                     <Input 
                         placeholder="Busque por pratos ou ingredientes"

@@ -23,6 +23,7 @@ export function MenuClient() {
 
     const navigate = useNavigate();
 
+    const [order, setOrder] = useState(0);
     const [meals, setMeals] = useState([]);
     const [desserts, setDesserts] = useState([]);
     const [drinks, setDrinks] = useState([]);
@@ -88,28 +89,22 @@ export function MenuClient() {
         getDrinks();
     }, [])
 
-   /*  useEffect(() => {
-        if (dishSelect) {
-            navigate(`/dishesPreviewAdm/${dishSelect}`);
-        }
-    }, [dishSelect]) */
+    /* useEffect(() => {
+        
+    }, []) */
 
     function handleLogout() {
-        navigate("/");
+        navigate(`/`);
         signOut();
-    }
-
-    function newDish() {
-        navigate(`/newDishes`);
     }
 
     return (
         <Conteiner>
             <Header
                 eventss={handleLogout}
-                events={newDish}
+                events={`/newOrder`}
                 btnLogo={< BsReceiptCutoff />}
-                btnTitle={"Pedidos (0)"}
+                btnTitle={`Pedidos (${order})`}
             >
             <Input 
                 placeholder="Busque por pratos ou ingredientes"
@@ -136,6 +131,7 @@ export function MenuClient() {
                                         title={food.title}
                                         subscript={food.description}
                                         value={food.price}
+                                        food={food.id}
                                         event={() => setDishSelect(food.id)}
                                     />
                                 ))
@@ -169,6 +165,7 @@ export function MenuClient() {
                                         sub={`imagem do prato ${food.title}`}
                                         title={food.title}
                                         subscript={food.description}
+                                        food={food.id}
                                         value={food.price}
                                         event={() => setDishSelect(food.id)}
                                     />
@@ -203,6 +200,7 @@ export function MenuClient() {
                                         sub={`imagem do prato ${food.title}`}
                                         title={food.title}
                                         subscript={food.description}
+                                        food={food.id}
                                         value={food.price}
                                         event={() => setDishSelect(food.id)}
                                     />
