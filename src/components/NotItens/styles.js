@@ -18,7 +18,7 @@ export const Conteiner = styled.div`
         background: none;
 
         margin-top: 5px;
-        margin-right: 12px;
+        margin-right: ${px2vw(17)};
     }
 
     .button-delete {
@@ -34,7 +34,7 @@ export const Conteiner = styled.div`
         height: ${px2vw(36)};
 
         margin-top: 0px;
-        padding: 10px 16px;
+        padding: ${px2vw(14)} ${px2vw(22)};
 
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
         background: transparent;

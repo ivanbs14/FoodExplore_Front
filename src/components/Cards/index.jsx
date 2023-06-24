@@ -1,17 +1,19 @@
 import { Conteiner } from "./styles";
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../hooks/auth";
 
 import { TfiPencil } from "react-icons/tfi"
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
-import { BtnTwo } from '../BtnTwo/Index';
-import { BtnIcludeDish } from '../BtnIcludeDish';
 import { ButtonEdit } from '../ButtonEdit';
+import { Display } from '../Display';
 
-export function Cards({ nimg, title, subscript, value, subs, event, food }) {
+export function Cards({ nimg, title, subscript, value, subs, event, food, dads }) {
     const { user } = useAuth();
+
+    const navigate = useNavigate();
     
     const [image, setImage] = useState('img1');
     const [quantity, setQuantity] = useState(1);
@@ -45,6 +47,12 @@ export function Cards({ nimg, title, subscript, value, subs, event, food }) {
             setUnidads(`${quantity}`)
         }
 
+        if(quantity == 11) {
+            alert("Desculpa, mas o limite máximo é de 10 unidades por prato.")
+            setQuantity(10)
+            setUnidads(`0${quantity}`)
+        }
+
     }, [quantity])
 
     let total;
@@ -66,8 +74,17 @@ export function Cards({ nimg, title, subscript, value, subs, event, food }) {
         }); */
 
        /*  alert('pedido realizado'); */
-        window.location.reload(true);
         alert(`voce fez ${quantity} pedidos de ${food} anotado`)
+        setQuantity(1)
+        setUnidads(`01`)
+    };
+
+    function details(dads) {
+        if(user.is_admin == 1) {
+            navigate(`/dishesPreviewAdm/${dads}`);
+        } else {
+            navigate(`/dishesPreviewClient/${dads}`);
+        }
     };
 
     return (
@@ -75,23 +92,30 @@ export function Cards({ nimg, title, subscript, value, subs, event, food }) {
             <div id="dish">
                 {user.is_admin == 1 ? (
                     <ButtonEdit
+                        className="btnEditPencil"
                         icon={TfiPencil}
                         onClick={event}
                     />
                 ) :  (
                     <ButtonEdit
+                        className="btnEditPencil"
                         icon={images[image]}
                         onClick={changeImage}
                     />
                 )}
             </div>
     
-            <img src={nimg} alt={subs} />
+            <img 
+                className="imgEdit"
+                src={nimg} 
+                alt={subs} 
+                onClick={() => details(dads)}
+            />
 
             <strong>
                 {title}
             </strong>
-            <p>{subscript}</p>
+            <p className="description hide">{subscript}</p>
             <h1>
                 R$ {value.replace('.', ',')}
             </h1>
@@ -99,22 +123,9 @@ export function Cards({ nimg, title, subscript, value, subs, event, food }) {
                 {user.is_admin == 1 ? (
                     <div />
                 ) :  (
-                    <div className="display" >
-                        <BtnTwo
-                        text="-"
-                        className="decrement"
-                        onClick={handleRemoveItem}
-                        />
-                        <span>{unidads}</span>
-                        <BtnTwo
-                        text="+"
-                        className="decrement"
-                        onClick={handleAddItem}
-                        />
-                        < BtnIcludeDish 
-                            text="incluir"
-                            className="insert"
-                            onClick={() => handleCreateOrder(food)}
+                    <div >
+                        < Display 
+                            food={food}
                         />
                     </div>
                 )}

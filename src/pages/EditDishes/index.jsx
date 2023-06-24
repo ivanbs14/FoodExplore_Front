@@ -97,14 +97,6 @@ export function EditDishes() {
         fetchDish();
     }, [])
 
-    /* useEffect(() => {
-        async function atualizationIngred() {
-            setIngredient(allIngredients);
-        }
-
-        atualizationIngred();
-    }, [newIngredient]) */
-
     useEffect(() => {
         async function dataDish() {
             dish.map((item) => {
@@ -128,15 +120,15 @@ export function EditDishes() {
 
     return (
         <Conteiner>
-                <Header
-                    eventss={handleLogout}
-                    btnTitle={"Novo prato"}
-                >
-                    <Input 
-                        placeholder="Busque por pratos ou ingredientes"
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </Header>
+            <Header
+                eventss={handleLogout}
+                btnTitle={"Novo prato"}
+            >
+                <Input 
+                    placeholder="Busque por pratos ou ingredientes"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </Header>
             <Content>
                 <ButtonText 
                     title={"voltar"}
@@ -148,7 +140,7 @@ export function EditDishes() {
                     <Section title={"Imagem do prato"}>
                         <Dish>
                             <label htmlFor="dish">
-                                <FiUpload />
+                                <FiUpload className="fiUpload"/>
                                 <span>Selecione imagem</span>
                             
                                 <input 
@@ -160,15 +152,14 @@ export function EditDishes() {
                         </Dish>
                     </Section>
                     
-                    <Section title={"Nome"}>
+                    <Section title={"Nome"} className="name">
                         <Input 
                             placeholder="Ex.: Salada Ceasar"
-                            /* defaultValue={dish.title} */
                             onChange={e => setTitle(e.target.value)}
                         />
                     </Section>
                     
-                    <Section title={"Categoria"}>
+                    <Section title={"Categoria"} className="categor">
                         <div>
                             <select name="category" defaultValue={''} onChange={texto => setCategory(texto.target.value)}>
                                 <option value="Refeições">Refeições</option>
@@ -206,7 +197,6 @@ export function EditDishes() {
                         <Input 
                             className={"preco"} 
                             placeholder={"00,00"}
-                            /* defaultValue={''} */
                             onChange={e => setPrice(e.target.value)}
                         />
                     </Section>

@@ -20,7 +20,7 @@ export const Conteiner = styled.div`
             background-color: ${({ theme }) => theme.COLORS.Dark_1000};
 
             font-weight: 500;
-            font-size: 14px;
+            font-size: ${px2vw(20)};
             padding: 4px 8px;
 
             border-radius: 5px;

@@ -17,5 +17,18 @@ export const Conteiner = styled.div`
     span {
         font-family: 'Roboto', sans-serif;
         font-size: ${px2vw(14)};
-    }
+    };
+
+    @media (max-width: 425px) {
+        height: ${px2vw(264)};
+        padding: ${px2vw(24)} ${px2vw(50)};
+
+        img{
+            width: 142px;
+        }
+
+        span {
+            font-size: ${px2vw(40)};
+        };
+    };
 `;

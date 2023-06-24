@@ -19,4 +19,12 @@ export const Conteiner = styled.textarea`
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
         
     }
+
+    @media (max-width: 425px) {
+        height: 172px;
+        padding: ${px2vw(30)};
+
+        font-weight: 400;
+        font-size: 16px;
+    };
 `;

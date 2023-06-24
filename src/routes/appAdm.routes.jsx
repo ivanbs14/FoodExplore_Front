@@ -12,7 +12,6 @@ export function AppRoutes() {
             <Route path="/editDishes/:id" element={<EditDishes />}/>
             <Route path="/newDishes" element={<NewDishes />}/>
             <Route path="/" element={<MenuAdm />}/>
-
         </Routes>
     )
 }

@@ -2,16 +2,22 @@ import styled from 'styled-components';
 import px2vw from "../../utils/px2vw";
 
 export const Conteiner = styled.div`
-    width: ${px2vw(400)};
+    width: 100%;
+    height: 48px;
+    display: flex;
     align-items: center;
     
     color: ${({theme}) => theme.COLORS.LIGHT_100};
+    background-color: ${({ theme }) => theme.COLORS.Dark_800};
     
     border-radius: 5px;
+
+    margin: 36px 0;
+    padding: 14px 12px;
     
     > input {
         width: 100%;
-        height: ${px2vw(48)};
+        font-size: 18px;
         
         padding: 12px;
         
@@ -27,7 +33,9 @@ export const Conteiner = styled.div`
 
 
     > svg {
-        margin-left: ${px2vw(140)};
+        font-size: 24px;
+        /* position: absolute; */
+        
     }
 `;
 

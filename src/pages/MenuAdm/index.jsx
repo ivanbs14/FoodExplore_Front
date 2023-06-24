@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
@@ -88,24 +88,14 @@ export function MenuAdm() {
 
     useEffect(() => {
         if (dishSelect) {
-            navigate(`/dishesPreviewAdm/${dishSelect}`);
+            navigate(`/editDishes/${dishSelect}`);
         }
     }, [dishSelect])
 
-    function handleLogout() {
-        navigate(`/`);
-        signOut();
-    }
-
     return (
         <Conteiner>
-            <Header
-                eventss={handleLogout}
-                events={`/newDishes`}
-                titleAdm={"admin"}
-                btnTitle={"Novo prato"}
-            >
-            <Input 
+            <Header>
+            <Input
                 placeholder="Busque por pratos ou ingredientes"
                 onChange={(e) => setSearch(e.target.value)}
             /> 
@@ -118,67 +108,67 @@ export function MenuAdm() {
                 </div>
             
                 <Cont>
-                    <Section className="categorias" title={"Refeições"}>
-                        <div className="menucard" ref={carousel}>
-                            {
-                                meals.map((food, index) => (
-                                    <Cards 
-                                        className="item"
-                                        key={String(index)}
-                                        nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
-                                        sub={`imagem do prato ${food.title}`}
-                                        title={food.title}
-                                        subscript={food.description}
-                                        value={food.price}
-                                        event={() => setDishSelect(food.id)}
-                                    />
-                                ))
-                            }
-                        </div>
-                        <div className="buttons">
-                            <div className="backgroundLeft"></div>
-                            <div className="backgroundRight"></div>
+                    <Section  title={"Refeições"}>
+                        <div className="categorias">
                             <ButtonEdit
+                                className="btnEdit"
                                 icon={MdKeyboardArrowLeft}
                                 id="btnL"
                                 onClick={handleLeftClickMeals}
                             />
-
-                            <ButtonEdit
-                                icon={MdKeyboardArrowRight}
-                                id="btnR"
-                                onClick={handleRightClickMeals}
-                            />
+                            <div className="menucard" ref={carousel}>
+                                {
+                                    meals.map((food, index) => (
+                                        <Cards 
+                                            className="item"
+                                            key={String(index)}
+                                            nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
+                                            sub={`imagem do prato ${food.title}`}
+                                            title={food.title}
+                                            subscript={food.description}
+                                            value={food.price}
+                                            event={() => setDishSelect(food.id)}
+                                            dads={food.id}
+                                        />
+                                    ))
+                                }
+                                <ButtonEdit
+                                    className="btnEditR"
+                                    icon={MdKeyboardArrowRight}
+                                    id="btnR"
+                                    onClick={handleRightClickMeals}
+                                />
+                            </div>
                         </div>
                     </Section>
                     
-                    <Section className="categorias" title={"Sobremesas"}>
-                        <div className="menucard" ref={carouselTwo}>
-                            {
-                                desserts.map((food, index) => (
-                                    <Cards 
-                                        className="item"
-                                        key={String(index)}
-                                        nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
-                                        sub={`imagem do prato ${food.title}`}
-                                        title={food.title}
-                                        subscript={food.description}
-                                        value={food.price}
-                                        event={() => setDishSelect(food.id)}
-                                    />
-                                ))
-                            }
-                        </div>
-                        <div className="buttons">
-                            <div className="backgroundLeft"></div>
-                            <div className="backgroundRight"></div>
+                    <Section title={"Sobremesas"}>
+                        <div className="categorias">
                             <ButtonEdit
+                                className="btnEdit"
                                 icon={MdKeyboardArrowLeft}
                                 id="btnL"
                                 onClick={handleLeftClickDesserts}
                             />
-
+                            <div className="menucard" ref={carouselTwo}>
+                                {
+                                    desserts.map((food, index) => (
+                                        <Cards 
+                                            className="item"
+                                            key={String(index)}
+                                            nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
+                                            sub={`imagem do prato ${food.title}`}
+                                            title={food.title}
+                                            subscript={food.description}
+                                            value={food.price}
+                                            event={() => setDishSelect(food.id)}
+                                            dads={food.id}
+                                        />
+                                    ))
+                                }
+                            </div>
                             <ButtonEdit
+                                className="btnEditR"
                                 icon={MdKeyboardArrowRight}
                                 id="btnR"
                                 onClick={handleRightClickDesserts}
@@ -186,33 +176,33 @@ export function MenuAdm() {
                         </div>
                     </Section>
                     
-                    <Section className="categorias" title={"Bebidas"}>
-                        <div className="menucard" ref={carouselTree}>
-                            {
-                                drinks.map((food, index) => (
-                                    <Cards 
-                                        className="item"
-                                        key={String(index)}
-                                        nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
-                                        sub={`imagem do prato ${food.title}`}
-                                        title={food.title}
-                                        subscript={food.description}
-                                        value={food.price}
-                                        event={() => setDishSelect(food.id)}
-                                    />
-                                ))
-                            }
-                        </div>
-                        <div className="buttons">
-                            <div className="backgroundLeft"></div>
-                            <div className="backgroundRight"></div>
+                    <Section title={"Bebidas"}>
+                        <div className="categorias">
                             <ButtonEdit
+                                className="btnEdit"
                                 icon={MdKeyboardArrowLeft}
                                 id="btnL"
                                 onClick={handleLeftClickDrinks}
                             />
-
+                            <div className="menucard" ref={carouselTree}>
+                                {
+                                    drinks.map((food, index) => (
+                                        <Cards 
+                                            className="item"
+                                            key={String(index)}
+                                            nimg={`${apiImg.defaults.baseURL}/files/${food.img_dish}`}
+                                            sub={`imagem do prato ${food.title}`}
+                                            title={food.title}
+                                            subscript={food.description}
+                                            value={food.price}
+                                            event={() => setDishSelect(food.id)}
+                                            dads={food.id}
+                                        />
+                                    ))
+                                }
+                            </div>
                             <ButtonEdit
+                                className="btnEditR"
                                 icon={MdKeyboardArrowRight}
                                 id="btnR"
                                 onClick={handleRightClickDrinks}

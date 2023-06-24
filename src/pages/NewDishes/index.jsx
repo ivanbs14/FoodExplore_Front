@@ -99,7 +99,7 @@ export function NewDishes() {
                     <Section title={"Imagem do prato"}>
                         <Dish>
                             <label htmlFor="dish">
-                                <FiUpload />
+                                <FiUpload className="fiUpload"/>
                                 <span>Selecione imagem</span>
                             
                                 <input 

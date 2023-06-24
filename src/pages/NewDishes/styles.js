@@ -161,6 +161,147 @@ export const Content = styled.div`
             background: ${({ theme }) => theme.COLORS.TOMATO_400};
         }
     }
+
+    @media (max-width: 425px) {
+        padding: ${px2vw(200)} ${px2vw(123)} 0;
+
+        h1 {
+            font-weight: 500;
+            font-size: 32px;
+        }
+
+        button:nth-child(1) {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .lineOne {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            section {
+                margin-top: 0;
+                margin-bottom: 24px;
+                
+                input {
+                    font-size: 16px;
+                    width: 100%;
+                    height: 48px;
+                };
+            };
+
+            section:nth-child(2){
+                margin-top: 50px;
+            };
+
+            .name {
+                margin-top: 0;
+                
+                h2 {
+                    font-size: 16px;
+                };
+            };
+
+            section:nth-child(3){
+                width: 100%;
+                margin-top: 0;
+
+                div{
+                    width: 100%;
+                    height: 48px;
+                    padding: 10px 15px;
+                }
+
+                select {
+                    font-size: 14px;
+                }
+            }
+        };
+
+        .lineTwo {
+            display: flex;
+            flex-direction: column;
+
+            section {
+                
+                h2 {
+                    font-size: 16px;
+                };
+            }
+
+            section:nth-child(1){
+                margin-top: 0;
+                margin-right: 0;
+            };
+            
+            section:nth-child(2){
+                width: 100%;
+                margin-right: 0;
+                margin-top: 24px;
+
+                .preco {
+                    font-size: 16px;
+                    width: 350px;
+                    height: 48px;
+                }
+            };
+
+            .tags {
+                gap: ${px2vw(16)};
+
+                margin-top: ${px2vw(16)};
+
+                div {
+                    width: 120px;
+                    height: 32px;
+                    padding: 1px;
+                }
+
+                button, input {
+                    font-size: 14px;
+                }
+
+                input {
+                    height: 28px;
+                }
+            }
+        }
+
+        section {
+                
+            h2 {
+                font-size: 16px;
+            };
+        }
+
+        .btns {
+            button {
+                width: 172px;
+                height: 48px;
+            
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+        }
+
+        section:nth-child(5){
+            margin-top: 24px;
+            margin-bottom: 24px;
+
+            textarea{
+                margin-bottom: 0;
+            }
+        }
+
+        .btntext {
+            width: 100%;
+            height: 48px;
+            margin-left: 0;
+
+            font-size: 16px;
+        }
+    };
 `;
 
 export const Dish = styled.div`
@@ -198,4 +339,25 @@ export const Dish = styled.div`
             display: none;
         }
     }
+
+    @media (max-width: 425px) {
+        > label {
+            width: 100%;
+            height: 48px;
+            justify-content: start;
+
+            .fiUpload {
+                width: 24px;
+                height: 24px;
+            }
+            span {
+                font-size: 14px;
+            }
+
+            svg {
+                width: ${px2vw(24)};
+                height: ${px2vw(24)};
+            }
+        };
+    };
 `;

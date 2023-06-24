@@ -6,21 +6,21 @@ export const Conteiner = styled.div`
     height: 100vh;
 
     display: grid;
-    grid-template-rows: ${px2vw(105)} auto ${px2vw(77)};
+    grid-template-rows: ${px2vw(105)} 100vh ${px2vw(77)};
     
     background-color: ${({ theme }) => theme.COLORS.Dark_400};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     div {
         .adm {
-            font-size: 12px;
+            font-size: ${px2vw(16)};
             text-decoration: none;
             color: ${({ theme }) => theme.COLORS.CAKE_200};
         }
     }
 
     @media (max-width: 425px) {
-        grid-template-rows: ${px2vw(200)} auto ${px2vw(264)};
+        grid-template-rows: ${px2vw(200)} 100vh ${px2vw(264)};
     };
 `;
 
@@ -42,16 +42,14 @@ export const Content = styled.div`
     };
 
     @media (max-width: 425px) {
-        
-        a {
-            font-weight: 500;
+        a{
             font-size: ${px2vw(82)};
 
-            svg {
+            svg{
                 width: ${px2vw(150)};
                 height: ${px2vw(150)};
             }
-        };
+        }
     };
 `;
 
@@ -59,7 +57,7 @@ export const Cont = styled.div`
     margin-top: ${px2vw(60)};
 
     display: flex;
-    gap: ${px2vw(60)};
+    gap: ${px2vw(66)};
 
     img {
         width: ${px2vw(390)};
@@ -87,17 +85,18 @@ export const Cont = styled.div`
         
         .products {
             display: flex;
-            gap: ${px2vw(17)};
+            gap: ${px2vw(16)};
+            
 
             margin-bottom: ${px2vw(48)};
 
             button {
-                height: ${px2vw(32)};
+                height: ${px2vw(40)};
 
                 background-color: ${({ theme }) => theme.COLORS.Dark_1000};
 
                 font-weight: 500;
-                font-size: ${px2vw(16)};
+                font-size: ${px2vw(20)};
                 padding: 4px 8px;
 
                 border-radius: 5px;
@@ -108,7 +107,7 @@ export const Cont = styled.div`
             width: ${px2vw(140)};
             height: ${px2vw(48)};
             font-weight: 500;
-            font-size: ${px2vw(16)};
+            font-size: ${px2vw(20)};
 
             padding: ${px2vw(12)} ${px2vw(20)};
         }
@@ -156,14 +155,12 @@ export const Cont = styled.div`
                 }
             }
 
-            .btn {
-                width: 100%;
-                height: ${px2vw(165)};
-                font-weight: 400;
-                font-size: ${px2vw(48)};
-
-                padding: ${px2vw(41)} ${px2vw(390)};
-            }
+            div:nth-child(4) {
+                width: 300px;
+                display: flex;
+                flex-direction: row;
+            };
         }
+
     };
 `;
