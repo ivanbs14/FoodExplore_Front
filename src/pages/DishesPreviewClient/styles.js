@@ -142,7 +142,7 @@ export const Cont = styled.div`
             }
 
             .products {
-                width: 316px;
+                width: ${px2vw(1087)};
                 margin-bottom: ${px2vw(165)};
                 justify-content: center;
                 gap: ${px2vw(83)};
@@ -156,7 +156,7 @@ export const Cont = styled.div`
             }
 
             div:nth-child(4) {
-                width: 300px;
+                width: ${px2vw(1032)};
                 display: flex;
                 flex-direction: row;
             };

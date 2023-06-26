@@ -13,7 +13,7 @@ export const Conteiner = styled.div`
         width: 100%;
         height: ${px2vw(48)};
         
-        padding: 12px;
+        padding: ${px2vw(17)};
         
         background: transparent;
         color: ${({theme}) => theme.COLORS.LIGHT_100};

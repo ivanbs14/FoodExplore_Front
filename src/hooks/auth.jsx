@@ -2,12 +2,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 import { api } from '../services/api';
 
-
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
     const [data, setData] = useState({});
     
+    /* creates user, stores in database, localstorage, creates a login token and stores in a data state. */
     async function signIn({ email, password }) {
         
         try {
@@ -29,6 +29,7 @@ function AuthProvider({ children }) {
         }
     }
 
+    /* delete conteúdo do localstorage */
     function signOut() {
         localStorage.removeItem("@foodexplorer:token");
         localStorage.removeItem("@foodexplorer:user");
@@ -36,6 +37,7 @@ function AuthProvider({ children }) {
        setData({});
     }
 
+    /* query user and token in localstorage */
     useEffect(() => {
         const token = localStorage.getItem("@foodexplorer:token");
         const user = localStorage.getItem("@foodexplorer:user");

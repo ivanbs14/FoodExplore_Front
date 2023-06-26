@@ -17,11 +17,19 @@ export const Conteiner = styled.div`
 
     div {
         .adm {
-            font-size: 12px;
+            font-size: ${px2vw(17)};
             text-decoration: none;
             color: ${({ theme }) => theme.COLORS.CAKE_200};
         }
     };
+
+    @media (max-width: 425px) {
+        div {
+        .adm {
+            font-size: 12px;
+        }
+    };
+    }
 `;
 
 export const Content = styled.div`
@@ -46,7 +54,7 @@ export const Content = styled.div`
         align-items: flex-end;
         
         margin-top: ${px2vw(172)};
-        margin-bottom: 63px;
+        margin-bottom: ${px2vw(88)};
         padding: ${px2vw(87)} ${px2vw(101)} 0;
         border-radius: 8px;
 
@@ -60,14 +68,14 @@ export const Content = styled.div`
         padding: ${px2vw(110)} ${px2vw(123)} 0;
 
         .imgMenu {
-            width: 192px;
-            height: 149px;
+            width: ${px2vw(660)};
+            height: ${px2vw(512)};
             margin-top: ${px2vw(90)};
         }
 
         .titulo {
             height: ${px2vw(410)};
-            padding: ${px2vw(125)} ${px2vw(101)} 0;
+            padding: ${px2vw(150)} ${px2vw(40)} 0;
             
             h1 {
                 font-weight: 600;
@@ -89,7 +97,7 @@ export const Cont = styled.div`
         h2 {
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            font-size: 32px;
+            font-size: ${px2vw(45)};
             margin-bottom: ${px2vw(43)};
         }
 

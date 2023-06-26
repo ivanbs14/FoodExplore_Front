@@ -58,6 +58,22 @@ export const Brand = styled.div`
 export const Content = styled.div`
   padding: 0 28px;
 
+  div {
+    height: 48px;
+    margin: 36px 0;
+    padding: 12px 14px;
+
+    svg{
+      width: 25px;
+      height: 25px;
+    }
+
+    input{
+      font-size: 16px;
+      margin-left: 14px;
+    }
+  }
+
   a {
     font-size: 25px;
     font-family: 'Roboto', sans-serif;

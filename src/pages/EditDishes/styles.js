@@ -62,10 +62,7 @@ export const Content = styled.div`
                     width: 100%;
                 }
             }
-        }
 
-        section {
-            
             input {
                 width: ${px2vw(360)};
                 margin-top: ${px2vw(16)};
@@ -84,7 +81,7 @@ export const Content = styled.div`
                 display: flex;
 
                 margin-top: ${px2vw(16)};
-                padding: ${px2vw(18)} ${px2vw(22)};
+                padding: ${px2vw(10)} ${px2vw(22)};
                 border: none;
                 border-radius: 8px;
 

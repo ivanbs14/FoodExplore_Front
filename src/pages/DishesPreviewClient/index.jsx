@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 
-import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { apiImg } from "../../services/apiImg";
 
@@ -15,24 +14,15 @@ import { Input } from "../../components/Input"
 import { DisplayTwo } from '../../components/DisplayTwo';
 
 export function DishesPreviewClient() {
-    const { user, signOut } = useAuth();
-
     const [dish, setDish] = useState([]);
 
     const [search, setSearch] = useState("");
     const [idDish, setIdDish] = useState();
     const [allingredients, setAllIngredients] = useState([]);
 
-    const [quantity, setQuantity] = useState(1);
-    const [unidads, setUnidads] = useState(`01`);
-
     const params = useParams();
-    const navigate = useNavigate();
 
-    function handleEditDishes(id) {
-        navigate(`/editDishes/${id}`);
-    };
-
+    /* Getting data from dish */
     useEffect(() => {
         async function fetchDish() {
             const response = await api.get(`/dish/${params.id}`);
@@ -42,6 +32,7 @@ export function DishesPreviewClient() {
         fetchDish();
     }, [])
 
+    /* Getting data from ingredients */
     useEffect(() => {
         async function fetchIngredients() {
             dish.map(ingred => (
@@ -51,58 +42,6 @@ export function DishesPreviewClient() {
 
         fetchIngredients();
     }, [dish]);
-
-    /* Includ qtd dish */
-    function handleRemoveItem() {
-        setQuantity(quantity - 1);
-
-        if (quantity == 1) {
-            setQuantity(1);
-        }
-    };
-
-    function handleAddItem() {
-        setQuantity(quantity + 1);
-    };  
-        
-    useEffect(() => {
-        if(quantity <= 9) {
-            setUnidads(`0${quantity}`)
-        } else {
-            setUnidads(`${quantity}`)
-        }
-
-        if(quantity == 11) {
-            alert("Desculpa, mas o limite máximo é de 10 unidades por prato.")
-            setQuantity(10)
-            setUnidads(`0${quantity}`)
-        }
-
-    }, [quantity])
-
-    let total;
-    async function handleCreateOrder(name, price, quantities, total, image) {
-        if (quantity > 10) {
-            return alert('limite máximo de unidade é de 10');
-        }
-
-        /* let p = Number(price.replace(',', '.')).toFixed(2);
-
-        total = (p * quantity).toFixed(2); */
-
-        /* await api.post(`/order/${user.id}`, {
-            name,
-            price,
-            quantity,
-            total,
-            image
-        }); */
-
-       /*  alert('pedido realizado'); */
-        alert(`voce fez ${quantity} pedidos de ${food} anotado`)
-        setQuantity(1)
-        setUnidads(`01`)
-    };
 
     return (
         <Conteiner>

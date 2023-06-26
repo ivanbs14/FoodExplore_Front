@@ -43,7 +43,7 @@ export const Conteiner = styled.div`
         height: ${px2vw(275)};
         display: flex;
         justify-content: center;
-        gap: 40px;
+        gap: ${px2vw(137)};
         
         .displays {
             height: ${px2vw(130)};

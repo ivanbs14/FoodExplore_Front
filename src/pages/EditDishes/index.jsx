@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Conteiner, Content, Dish } from "./styles";
 
-import { FiUpload } from 'react-icons/fi';
-
 import { useAuth } from "../../hooks/auth";
-
 import { useNavigate, useParams } from "react-router-dom";
-
 import { api } from "../../services/api";
+
+import { FiUpload } from 'react-icons/fi';
 
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
@@ -22,7 +20,6 @@ export function EditDishes() {
     const { signOut } = useAuth();
 
     const [search, setSearch] = useState("");
-    const [dish, setDish] = useState();
 
     const [file, setFile] = useState(null);
 
@@ -31,17 +28,13 @@ export function EditDishes() {
     const [price, setPrice] = useState();
     const [description, setDescription] = useState("");
 
-    /* armazena ingredients do banco de dados */
-    const [dataIngredientsExisting, setDataIngredientsExisting] = useState([]);
-    const [allIngredientExisting, setAllIngredientExisting] = useState([]);
-
-    /* recebe os novos ingredients digitados */
     const [newIngredient, setNewIngredient] = useState("");
     const [allIngredients, setAllIngredients] = useState([]);
 
     const params = useParams();
     const navigate = useNavigate();
 
+    /* receives the image and performs the necessary treatment */
     function handleChangeImg(event) {
         const fileImg = event.target.files[0];
         const fileUploadForm = new FormData();
@@ -49,10 +42,12 @@ export function EditDishes() {
         setFile(fileUploadForm);
     };
 
+    /* return to previous page */
     function handlePreviewDishes() {
         navigate(`/dishesPreviewAdm/${params.id}`);
     };
 
+    /* send data to update new dish */
     function handleAddProduct() {
         setAllIngredients(prevState => [...prevState, newIngredient]);
         setNewIngredient("");
@@ -63,6 +58,10 @@ export function EditDishes() {
     }
 
     async function handlePutDish() {
+        if(category === "Click e escolha uma opção" || category === "") {
+            return alert("Você não escolheu uma categoria. Clique e escolha uma.");
+        }
+
         if(newIngredient) {
             return alert("Você não digitou um ingrediente, mas não clicou em adicionar.");
         }
@@ -79,44 +78,17 @@ export function EditDishes() {
         alert("Prato Atualizado com sucesso com sucesso!");
     };
 
+    /* delete existing dish */
     async function deleteDish() {
         const delet = await api.delete(`/dish/${params.id}`)
+        alert("Prato excluído com sucesso!")
     };
 
+    /* returns the login page */
     function handleLogout() {
         navigate(-1);
         signOut();
     }
-
-    useEffect(() => {
-        async function fetchDish() {
-            const response = await api.get(`/dish/${params.id}`);
-            setDish(response.data);
-        }
-
-        fetchDish();
-    }, [])
-
-    useEffect(() => {
-        async function dataDish() {
-            dish.map((item) => {
-                setTitle(item.title);
-                setCategory(item.category);
-                setPrice(item.price);
-                setDescription(item.description);
-                setDataIngredientsExisting(item.ingredients)
-            })
-        }
-        dataDish();
-
-        async function dataIngredients() {
-            dataIngredientsExisting.map(ingred => (
-                setAllIngredientExisting(prevState => [...prevState, ingred.name])
-            ))
-        }
-        dataIngredients();
-
-    }, [dish])
 
     return (
         <Conteiner>
@@ -135,7 +107,7 @@ export function EditDishes() {
                     onClick={() => handlePreviewDishes()}
                 />
 
-                <h1>Adicionar prato</h1>
+                <h1>Editar prato</h1>
                 <div className="lineOne">
                     <Section title={"Imagem do prato"}>
                         <Dish>
@@ -162,6 +134,7 @@ export function EditDishes() {
                     <Section title={"Categoria"} className="categor">
                         <div>
                             <select name="category" defaultValue={''} onChange={texto => setCategory(texto.target.value)}>
+                                <option value="Opcoes">Click e escolha uma opção</option>
                                 <option value="Refeições">Refeições</option>
                                 <option value="Sobremesas">Sobremesas</option>
                                 <option value="Bebidas">Bebidas</option>

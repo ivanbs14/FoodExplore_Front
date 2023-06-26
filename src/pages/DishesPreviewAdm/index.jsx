@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 
-import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { apiImg } from "../../services/apiImg";
 
@@ -15,7 +14,6 @@ import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
 
 export function DishesPreviewAdm() {
-    const { signOut } = useAuth();
 
     const [dish, setDish] = useState([]);
 
@@ -26,10 +24,12 @@ export function DishesPreviewAdm() {
     const params = useParams();
     const navigate = useNavigate();
 
+    /* Navigating to edit page */
     function handleEditDishes(id) {
         navigate(`/editDishes/${id}`);
     };
 
+    /* Getting data from dish */
     useEffect(() => {
         async function fetchDish() {
             const response = await api.get(`/dish/${params.id}`);
@@ -39,6 +39,7 @@ export function DishesPreviewAdm() {
         fetchDish();
     }, [])
 
+    /* Getting data from ingredients */
     useEffect(() => {
         async function fetchIngredients() {
             dish.map(ingred => (

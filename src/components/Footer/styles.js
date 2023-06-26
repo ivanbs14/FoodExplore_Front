@@ -24,7 +24,7 @@ export const Conteiner = styled.div`
         padding: ${px2vw(24)} ${px2vw(50)};
 
         img{
-            width: 142px;
+            width: ${px2vw(490)};
         }
 
         span {

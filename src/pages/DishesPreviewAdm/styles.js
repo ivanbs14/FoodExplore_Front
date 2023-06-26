@@ -143,7 +143,7 @@ export const Cont = styled.div`
             }
 
             .products {
-                width: 316px;
+                width: ${px2vw(1090)};
                 margin-bottom: ${px2vw(165)};
                 justify-content: center;
                 gap: ${px2vw(83)};

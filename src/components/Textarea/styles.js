@@ -21,10 +21,10 @@ export const Conteiner = styled.textarea`
     }
 
     @media (max-width: 425px) {
-        height: 172px;
+        height: ${px2vw(591)};
         padding: ${px2vw(30)};
 
         font-weight: 400;
-        font-size: 16px;
+        font-size: ${px2vw(55)};
     };
 `;

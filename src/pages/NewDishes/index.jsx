@@ -47,8 +47,12 @@ export function NewDishes() {
     };
 
     async function handleNewDish() {
+        if(category === "Click e escolha uma opção" || category === "") {
+            return alert("Você não escolheu uma categoria. Clique e escolha uma.");
+        }
+
         if(newIngredients) {
-            return alert("Você não digitou um ingrediente, mas não clicou em adicionar.");
+            return alert("Você não digitou um ingrediente, digite no minimo um.");
         }
 
         const response = await api.post("/dish", {
@@ -121,6 +125,7 @@ export function NewDishes() {
                     <Section title={"Categoria"}>
                         <div>
                             <select name="category" value={category} onChange={texto => setCategory(texto.target.value)}>
+                                <option value="Opcoes">Click e escolha uma opção</option>
                                 <option value="Refeições">Refeições</option>
                                 <option value="Sobremesas">Sobremesas</option>
                                 <option value="Bebidas">Bebidas</option>

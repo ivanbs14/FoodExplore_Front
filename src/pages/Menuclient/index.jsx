@@ -66,14 +66,12 @@ export function MenuClient() {
             const response = await api.get(`/Client/?category=${filterRefeiçoes}`);
             setMeals(response.data);
         }
-
         getMeals();
 
         async function getDesserts() {
             const response = await api.get(`/Client/?category=${filterSobremesas}`);
             setDesserts(response.data);
         }
-        
         getDesserts();
         
         async function getDrinks() {

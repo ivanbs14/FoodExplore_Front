@@ -3,7 +3,7 @@ import px2vw from "../../utils/px2vw";
 
 export const Conteiner = styled.div`
     width: 100%;
-    height: 48px;
+    height: ${px2vw(67)};
     display: flex;
     align-items: center;
     
@@ -12,14 +12,14 @@ export const Conteiner = styled.div`
     
     border-radius: 5px;
 
-    margin: 36px 0;
-    padding: 14px 12px;
+    margin: ${px2vw(50)} 0;
+    padding: ${px2vw(20)} ${px2vw(17)};
     
     > input {
         width: 100%;
-        font-size: 18px;
+        font-size: ${px2vw(25)};
         
-        padding: 12px;
+        padding: ${px2vw(17)};
         
         background: transparent;
         color: ${({theme}) => theme.COLORS.LIGHT_100};
@@ -31,11 +31,8 @@ export const Conteiner = styled.div`
 
     }
 
-
     > svg {
-        font-size: 24px;
-        /* position: absolute; */
-        
+        font-size: ${px2vw(33)};
     }
 `;
 

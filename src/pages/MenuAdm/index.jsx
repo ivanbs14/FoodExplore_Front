@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Conteiner, Content, Cont } from "./styles";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
-import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { apiImg } from "../../services/apiImg";
 
@@ -17,8 +16,6 @@ import { ButtonEdit } from '../../components/ButtonEdit';
 import { Input } from '../../components/Input';
 
 export function MenuAdm() {
-    const { signOut } = useAuth();
-
     const navigate = useNavigate();
 
     const [meals, setMeals] = useState([]);
@@ -86,6 +83,7 @@ export function MenuAdm() {
         getDrinks();
     }, [])
 
+    /* Navigate to the dish edit page */
     useEffect(() => {
         if (dishSelect) {
             navigate(`/editDishes/${dishSelect}`);

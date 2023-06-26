@@ -47,7 +47,7 @@ export const Content = styled.div`
     }
 
     .menu{
-        font-size: 25px;
+        font-size: ${px2vw(35)};
     }
 
     @media (max-width: 425px) {
@@ -57,7 +57,7 @@ export const Content = styled.div`
         justify-content: center;
 
         .logo{
-            height: 30px;
+            height: ${px2vw(105)};
         }
 
         .searchDishes, .btnDish, .btnLogout {
@@ -67,7 +67,7 @@ export const Content = styled.div`
         .menuSearch {
             display: block;
             margin-right: ${px2vw(150)};
-            font-size: 25px;
+            font-size: ${px2vw(85)};
         }
         
         .menuOrder{
@@ -87,9 +87,9 @@ export const Content = styled.div`
 
             .menu{
                 display: block;
-                width: 30px;
-                height: 30px;
-                margin-right: 70px;
+                width: ${px2vw(103)};
+                height: ${px2vw(103)};
+                margin-right: ${px2vw(240)};
             }
         }
         
@@ -103,9 +103,9 @@ export const Content = styled.div`
 
             .menu{
                 display: block;
-                width: 30px;
-                height: 30px;
-                margin-right: 70px;
+                width: ${px2vw(103)};
+                height: ${px2vw(103)};
+                margin-right: ${px2vw(240)};
 
             }
         }
