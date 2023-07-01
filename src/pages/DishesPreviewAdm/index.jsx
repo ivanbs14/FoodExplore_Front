@@ -15,14 +15,24 @@ import { Input } from "../../components/Input"
 
 export function DishesPreviewAdm() {
 
-    const [dish, setDish] = useState([]);
-
     const [search, setSearch] = useState("");
-    const [idDish, setIdDish] = useState();
+    const [dish, setDish] = useState([]);
     const [allingredients, setAllIngredients] = useState([]);
 
     const params = useParams();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchNotes() {
+            if(search) {
+                const response = await api.get(`/search?search=${search}`);
+                setDish(response.data);
+            }
+        }
+
+        fetchNotes();
+    }, [search]);
+    console.log(dish)
 
     /* Navigating to edit page */
     function handleEditDishes(id) {
@@ -55,7 +65,7 @@ export function DishesPreviewAdm() {
                 <Header>
                     <Input 
                         placeholder="Busque por pratos ou ingredientes"
-                        /* onChange={(e) => setSearch(e.target.value)} */
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </Header>
             <Content>
@@ -64,19 +74,18 @@ export function DishesPreviewAdm() {
                     voltar
                 </Link>
             
-                {
+                {dish &&
                     dish.map(rush => (
                     <Cont>
                         <img 
                             src={`${apiImg.defaults.baseURL}/files/${rush.img_dish}`} 
                             alt="imagem do prato" 
                         />
-
                         <div className="itens">
                             <h1>{rush.title}</h1>
                             <p>{rush.description}</p>
                             <div className="products">
-                                {
+                                {allingredients &&
                                     allingredients.map((ingredients, index) => (
                                         <ButtonText 
                                             key={String(index)}

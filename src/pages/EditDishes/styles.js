@@ -130,10 +130,11 @@ export const Content = styled.div`
         }
 
         section:nth-child(2) {
-            width: ${px2vw(251)};
+            div{
+                width: ${px2vw(251)};
+            }
             
             .preco {
-                width: ${px2vw(251)};
                 margin-top: ${px2vw(16)};
                 border-radius: 8px;
                 background: ${({ theme }) => theme.COLORS.Dark_800};

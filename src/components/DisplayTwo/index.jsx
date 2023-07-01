@@ -30,7 +30,7 @@ export function DisplayTwo({ food }) {
     };  
 
     let total;
-    async function handleCreateOrder(name, price, quantities, total, image) {
+    async function handleCreateOrder(food, price, quantities, total, image) {
         if (quantity > 10) {
             return alert('limite máximo de unidade é de 10');
         }
@@ -55,7 +55,7 @@ export function DisplayTwo({ food }) {
 
     useEffect(() => {
         async function priceFood() {
-            const response = await api.get(`/dish/${params.id}`);
+            const response = await api.get(`/dish/${food}`);
             setDish(response.data);
         };
     

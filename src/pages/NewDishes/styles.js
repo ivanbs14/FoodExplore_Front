@@ -134,10 +134,10 @@ export const Content = styled.div`
         }
 
         section:nth-child(2) {
-            width: ${px2vw(251)};
-            
-            .preco {
+            div{
                 width: ${px2vw(251)};
+            }
+            .preco {
                 margin-top: ${px2vw(16)};
                 border-radius: 8px;
                 background: ${({ theme }) => theme.COLORS.Dark_800};

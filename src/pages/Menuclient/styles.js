@@ -14,6 +14,80 @@ export const Conteiner = styled.div`
     
     background-color: ${({ theme }) => theme.COLORS.Dark_400};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+    .previewDishClient {
+        margin: 32px 122px;
+
+        .handleBtn {
+            font-weight: 700;
+            font-size: 24px;
+
+            svg{
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        #previewAllDishClient {
+            margin-top: ${px2vw(60)};
+            display: flex;
+            gap: ${px2vw(66)};
+
+            img {
+                width: ${px2vw(390)};
+                height: ${px2vw(390)};
+            }
+
+            .itens {
+                width: 100%;
+                height: ${px2vw(390)};
+
+                margin-top: ${px2vw(45)};
+
+                h1, p {
+                    margin-bottom: ${px2vw(24)};
+                }
+
+                h1 {
+                    font-weight: 500;
+                    font-size: ${px2vw(40)};
+                }
+
+                p {
+                    font-size: ${px2vw(24)};
+                }
+                
+                .products {
+                    display: flex;
+                    gap: ${px2vw(16)};
+                    
+
+                    margin-bottom: ${px2vw(48)};
+
+                    button {
+                        height: ${px2vw(40)};
+
+                        background-color: ${({ theme }) => theme.COLORS.Dark_1000};
+
+                        font-weight: 500;
+                        font-size: ${px2vw(20)};
+                        padding: 4px 8px;
+
+                        border-radius: 5px;
+                    }
+                }
+
+                .btn {
+                    width: ${px2vw(140)};
+                    height: ${px2vw(48)};
+                    font-weight: 500;
+                    font-size: ${px2vw(20)};
+
+                    padding: ${px2vw(12)} ${px2vw(20)};
+                }
+            }
+        }
+    }
 `;
 
 export const Content = styled.div`
@@ -46,7 +120,6 @@ export const Content = styled.div`
             font-weight: 500;
             font-size: ${px2vw(40)};
         }
-
     }
 
     @media (max-width: 425px) {

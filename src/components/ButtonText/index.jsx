@@ -1,6 +1,6 @@
 import { Conteiner } from './styles';
 
-export function ButtonText({ title, isActive, ...rest }) {
+export function ButtonText({ title, isActive, Icon, ...rest }) {
 
     return (
         <Conteiner 
@@ -8,6 +8,7 @@ export function ButtonText({ title, isActive, ...rest }) {
             isActive={isActive}
             { ...rest}
         >
+            {Icon}
             {title}
         </Conteiner>
     )

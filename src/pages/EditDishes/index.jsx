@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Conteiner, Content, Dish } from "./styles";
 
 import { useAuth } from "../../hooks/auth";
@@ -20,15 +20,17 @@ export function EditDishes() {
     const { signOut } = useAuth();
 
     const [search, setSearch] = useState("");
+    const [data, setData] = useState();
 
     const [file, setFile] = useState(null);
 
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState();
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState();
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState();
 
     const [newIngredient, setNewIngredient] = useState("");
+    const [allIngredientsExistent, setAllIngredientsExistent] = useState([]);
     const [allIngredients, setAllIngredients] = useState([]);
 
     const params = useParams();
@@ -58,12 +60,8 @@ export function EditDishes() {
     }
 
     async function handlePutDish() {
-        if(category === "Click e escolha uma opção" || category === "") {
-            return alert("Você não escolheu uma categoria. Clique e escolha uma.");
-        }
-
-        if(newIngredient) {
-            return alert("Você não digitou um ingrediente, mas não clicou em adicionar.");
+        if(!allIngredients){
+            console.log("ola")
         }
 
         const responseData = await api.put(`/dish/${params.id}`, {
@@ -74,8 +72,12 @@ export function EditDishes() {
             allIngredients,
         });
 
-        await api.patch(`/dish/${params.id}`, file );
-        alert("Prato Atualizado com sucesso com sucesso!");
+        if (!file) {
+        alert('Prato atualizado com sucesso');
+        } else {
+        await api.patch(`/dish/${params.id}`, file);
+        alert('Prato atualizada com sucesso');
+        }
     };
 
     /* delete existing dish */
@@ -89,6 +91,38 @@ export function EditDishes() {
         navigate(-1);
         signOut();
     }
+
+    /* receive data from existing dish */
+    useEffect(() => {
+        async function fetchData() {
+          const response = await api.get(`/dish/${params.id}`);
+          setData(response.data);
+
+        }
+        fetchData();
+      }, []);
+    
+      /* stores data from existing dishes in the states */
+      useEffect(() => {
+        async function dataDish() {
+            data?.map((dis) => (
+                setTitle(dis.title),
+                setCategory(dis.category),
+                setPrice(dis.price),
+                setDescription(dis.description),
+                setAllIngredientsExistent(dis.ingredients)
+            ))
+        }
+
+        dataDish();
+
+        async function ingredientsExistents() {
+            const ingred = allIngredientsExistent.map(ingre => ingre.name);
+            setAllIngredients(ingred)
+        }
+
+        ingredientsExistents();
+      }, [data]);
 
     return (
         <Conteiner>
