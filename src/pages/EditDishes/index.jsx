@@ -82,8 +82,9 @@ export function EditDishes() {
 
     /* delete existing dish */
     async function deleteDish() {
-        const delet = await api.delete(`/dish/${params.id}`)
-        alert("Prato excluído com sucesso!")
+        await api.delete(`/dish/${params.id}`);
+        alert("Prato excluído com sucesso!");
+        navigate(-1);
     };
 
     /* returns the login page */

@@ -117,7 +117,7 @@ export function Cards({ nimg, title, subscript, value, subs, event, food, dads }
             </strong>
             <p className="description hide">{subscript}</p>
             <h1>
-                R$ {value.replace('.', ',')}
+                R$ {value?.replace('.', ',')}
             </h1>
             <div >
                 {user.is_admin == 1 ? (

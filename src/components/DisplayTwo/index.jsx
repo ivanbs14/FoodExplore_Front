@@ -48,7 +48,7 @@ export function DisplayTwo({ food }) {
         }); */
 
        /*  alert('pedido realizado'); */
-        alert(`voce fez ${quantity} pedidos de ${food} anotado`);
+        alert(`voce fez ${quantity} pedidos de ${food}`);
         setQuantity(1);
         setUnidads(`01`);
     };

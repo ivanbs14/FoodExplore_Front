@@ -1,5 +1,6 @@
 import axios from "axios";
 
 export const apiImg = axios.create({
-    baseURL: "http://localhost:3333"
+    baseURL: "https://foodexplorer-api-tsbq.onrender.com"
+    /* baseURL: "http://localhost:3333" */
 });

@@ -47,12 +47,23 @@ export function NewDishes() {
     };
 
     async function handleNewDish() {
-        if(category === "Click e escolha uma opção" || category === "") {
+        if(!file) {
+            return alert("Você não acrescentou imagem, selecione uma para continuar.");
+        }
+        if(!title) {
+            return alert("Você não acrescentou titulo, digite um para continuar.");
+        }
+        if(category === "Click e escolha uma opção" || category === "" || category === "Opcoes") {
             return alert("Você não escolheu uma categoria. Clique e escolha uma.");
         }
-
-        if(newIngredients) {
+        if(ingredients == "") {
             return alert("Você não digitou um ingrediente, digite no minimo um.");
+        }
+        if(!price) {
+            return alert("Você não digitou um preço, digite um valor.");
+        }
+        if(!description) {
+            return alert("Descreva o prato. Falando brevemente sobre ele.");
         }
 
         const response = await api.post("/dish", {
