@@ -1,7 +1,7 @@
 import { Conteiner } from "./styles";
 import { useState, useEffect } from 'react';
 
-import { BtnTwo } from '../BtnTwo';
+import { ButtonText } from '../ButtonText';
 import { BtnIcludeDish } from '../BtnIcludeDish';
 
 export function Display({ food }) {
@@ -63,14 +63,14 @@ export function Display({ food }) {
     return (
         <Conteiner>
             <div className="displays">
-                <BtnTwo
-                    text="-"
+                <ButtonText
+                    title="-"
                     className="decrement"
                     onClick={handleRemoveItem}
                     />
                     <span>{unidads}</span>
-                    <BtnTwo
-                    text="+"
+                    <ButtonText
+                    title="+"
                     className="decrement"
                     onClick={handleAddItem}
                 />

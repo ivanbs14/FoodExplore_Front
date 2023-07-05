@@ -81,7 +81,7 @@ export function DishesPreviewClient() {
 
                             <DisplayTwo 
                                 className="displayPreview"
-                                food={rush.id}
+                                qtdFood={rush.id}
                             />
                             
                         </div>

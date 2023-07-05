@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
 import { api } from "../../services/api";
-
-import { BtnTwo } from '../BtnTwo';
 import { BsReceiptCutoff } from "react-icons/bs";
 
-export function DisplayTwo({ food }) {
+import { ButtonText } from "../ButtonText";
+
+export function DisplayTwo({ qtdFood }) {
 
     const [quantity, setQuantity] = useState(1);
     const [unidads, setUnidads] = useState(`01`);
@@ -30,7 +30,7 @@ export function DisplayTwo({ food }) {
     };  
 
     let total;
-    async function handleCreateOrder(food, price, quantities, total, image) {
+    async function handleCreateOrder(qtdFood, price, quantities, total, image) {
         if (quantity > 10) {
             return alert('limite máximo de unidade é de 10');
         }
@@ -48,14 +48,14 @@ export function DisplayTwo({ food }) {
         }); */
 
        /*  alert('pedido realizado'); */
-        alert(`voce fez ${quantity} pedidos de ${food}`);
+        alert(`voce fez ${quantity} pedidos de ${qtdFood}`);
         setQuantity(1);
         setUnidads(`01`);
     };
 
     useEffect(() => {
         async function priceFood() {
-            const response = await api.get(`/dish/${food}`);
+            const response = await api.get(`/dish/${qtdFood}`);
             setDish(response.data);
         };
     
@@ -98,14 +98,14 @@ export function DisplayTwo({ food }) {
     return (
         <Conteiner>
             <div className="displays">
-                <BtnTwo
-                    text="-"
+                <ButtonText
+                    title="-"
                     className="decrement"
                     onClick={handleRemoveItem}
                     />
-                    <span>{unidads}</span>
-                    <BtnTwo
-                    text="+"
+                <span>{unidads}</span>
+                <ButtonText
+                    title="+"
                     className="decrement"
                     onClick={handleAddItem}
                 />
@@ -117,7 +117,7 @@ export function DisplayTwo({ food }) {
             />  */}
 
             <NewNote 
-                onClick={() => handleCreateOrder(food)}
+                onClick={() => handleCreateOrder(qtdFood)}
                 className="insert"
             >
                 {< BsReceiptCutoff className="btnReceipt hide"/>}
