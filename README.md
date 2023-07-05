@@ -5,7 +5,10 @@ Desenvolvido por Ivan Barbosa.<br>
 Layout UI/UX RocketSeat.
 </p>
 
-Você pode interagir com o deploy do projeto através [CLICANDO AQUI](https://foofexploreriv.netlify.app/).
+<p align="center">
+Você pode interagir com o deploy do projeto <br>
+<a href="https://foofexploreriv.netlify.app/">CLICANDO AQUI!</a>
+</p>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
