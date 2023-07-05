@@ -5,6 +5,8 @@ Desenvolvido por Ivan Barbosa.<br>
 Layout UI/UX RocketSeat.
 </p>
 
+Você pode interagir com o deploy do projeto através [CLICANDO AQUI](https://foofexploreriv.netlify.app/).
+
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -46,6 +48,38 @@ O food explorer terá duas personas: o admin e o usuário;
 O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualizar, editar e apagar um prato a qualquer momento. Cada prato deve conter uma imagem, um nome, uma categoria, uma breve descrição, os ingredientes e o seu preço. Ao clicar em adicionar prato, o admin receberá uma mensagem de sucesso e será redirecionado para a página principal;
 
 O usuário irá visualizar todos os pratos cadastrados e, quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
+
+## 💻 Clone e acesse o projeto
+------------
+    `https://github.com/ivanbs14/FoodExplore_Front.git`
+
+    or 
+
+    `gh repo clone ivanbs14/FoodExplore_Front`
+
+## 💻 Configurar e executar cliente
+------------
+Acesse a pasta do cliente:
+
+`cd FoodExplore_Front/`
+
+Agora, instale e execute seu aplicativo
+
+`npm install`
+
+`npm run dev`
+
+Verifique se o aplicativo front-end esta em execução no local: http://localhost:5173/ <br />(este endereço acima pode variar)
+
+Se preferir visite o deploy (temporário) do projeto em: https://foofexploreriv.netlify.app/
+
+
+## :memo: Qualquer dúvida, envie um e-mail para
+
+`ivanbarbosa14@hotmail.com`
+
+---
+
 
 ## 🔖 Layout
 
