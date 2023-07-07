@@ -72,6 +72,14 @@ Agora, instale e execute seu aplicativo
 
 `npm run dev`
 
+ATENÇÃO, SEGUE ABAXO SENHAS PARA ACESSO:
+
+`LOGIN USER: client`
+`SENHA USER: 1234`
+
+`LOGIN ADM: adm`
+`SENHA USER: 123`
+
 Verifique se o aplicativo front-end esta em execução no local: http://localhost:5173/ <br />(este endereço acima pode variar)
 
 Se preferir visite o deploy (temporário) do projeto em: https://foofexploreriv.netlify.app/
