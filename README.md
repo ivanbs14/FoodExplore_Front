@@ -7,7 +7,9 @@ Layout UI/UX RocketSeat.
 
 <p align="center">
 Você pode interagir com o deploy do projeto <br>
-<a href="https://foofexploreriv.netlify.app/">CLICANDO AQUI!</a>
+<a href="https://foofexploreriv.netlify.app/">CLICANDO AQUI!</a> <br>
+ATENÇÃO: OS SERVIDORES SÃO GRATUITOS PORTANTO AO CLICAR, 
+AGUARDE 1 MINUTO PARA QUE O PROJETO SEJA INICIALIZADO
 </p>
 
 <p align="center">
